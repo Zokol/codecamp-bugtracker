@@ -1,0 +1,5 @@
+#summary Collection of links to learn jQuery.
+
+*Linkit*
+
+  * http://www.slideshare.net/tomijuhola/jquery-introduction-9043697
