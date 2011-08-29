@@ -1,0 +1,10 @@
+c:\users\heikki\documents\visual studio 2010\Projects\BugTracker\BugTracker\bin\BugTracker.dll
+c:\users\heikki\documents\visual studio 2010\Projects\BugTracker\BugTracker\bin\BugTracker.pdb
+c:\users\heikki\documents\visual studio 2010\Projects\BugTracker\BugTracker\bin\EntityFramework.dll
+c:\users\heikki\documents\visual studio 2010\Projects\BugTracker\BugTracker\bin\EntityFramework.xml
+c:\users\heikki\documents\visual studio 2010\Projects\BugTracker\BugTracker\obj\Debug\ResolveAssemblyReference.cache
+c:\users\heikki\documents\visual studio 2010\Projects\BugTracker\BugTracker\obj\Debug\BugTracker.dll
+c:\users\heikki\documents\visual studio 2010\Projects\BugTracker\BugTracker\obj\Debug\BugTracker.pdb
+C:\codecamp\BugTracker\BugTracker\obj\Debug\ResolveAssemblyReference.cache
+C:\codecamp\BugTracker\BugTracker\obj\Debug\BugTracker.dll
+C:\codecamp\BugTracker\BugTracker\obj\Debug\BugTracker.pdb
