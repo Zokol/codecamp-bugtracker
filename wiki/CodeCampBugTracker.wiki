@@ -1,0 +1,19 @@
+#summary Basic concept and development ideas.
+
+*Suunnittelu*
+
+Kuvat suunnittelupalaverin tauluista.
+
+
+*Perusrakenne*
+
+--
+
+
+*Jälkeenpäin lisättävät ominaisuudet*
+
+--
+
+
+*Linkit*
+ * Brieffin slidet tehtävänannosta: http://www.slideshare.net/tomijuhola/codecamp-general-info
