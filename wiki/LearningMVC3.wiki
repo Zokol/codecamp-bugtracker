@@ -1,0 +1,8 @@
+#summary Collection of links that help understanding MVC3.
+
+*Muutamia linkkejä MVC3:n opiskeluun.*
+
+
+ * Simppeli tutoriaali MVC3:n perusteisiin: http://www.asp.net/mvc/tutorials/getting-started-with-mvc3-part1-cs
+
+ * Brieffinigin MVC3 slidet: http://www.slideshare.net/tomijuhola/aspnet-mvc-introduction-9001114
