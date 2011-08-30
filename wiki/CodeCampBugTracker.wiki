@@ -35,6 +35,8 @@ Controllers
  * User
 
 Views
+http://users.utu.fi/jjholv/2011-08-30%2014.24.04.jpg
+
  * Bug list ( List view )
   * Listaa kaikki bugit, mahdollisuus järjestellä ja suodattaa
 
