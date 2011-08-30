@@ -5,10 +5,3 @@ C:\codecamp\bugtracker\bugtracker\bin\EntityFramework.xml
 C:\codecamp\bugtracker\bugtracker\obj\Debug\ResolveAssemblyReference.cache
 C:\codecamp\bugtracker\bugtracker\obj\Debug\bugtracker.dll
 C:\codecamp\bugtracker\bugtracker\obj\Debug\bugtracker.pdb
-C:\codecamp\codecamp-bugtracker\bugtracker\bugtracker\bin\bugtracker.dll
-C:\codecamp\codecamp-bugtracker\bugtracker\bugtracker\bin\bugtracker.pdb
-C:\codecamp\codecamp-bugtracker\bugtracker\bugtracker\bin\EntityFramework.dll
-C:\codecamp\codecamp-bugtracker\bugtracker\bugtracker\bin\EntityFramework.xml
-C:\codecamp\codecamp-bugtracker\bugtracker\bugtracker\obj\Debug\ResolveAssemblyReference.cache
-C:\codecamp\codecamp-bugtracker\bugtracker\bugtracker\obj\Debug\bugtracker.dll
-C:\codecamp\codecamp-bugtracker\bugtracker\bugtracker\obj\Debug\bugtracker.pdb
