@@ -14,12 +14,10 @@ http://users.utu.fi/jjholv/model.png
  * Tietojen tallennus tietokantaan tai tiedostoon
  * Bugilista
  * Uuden bugin raportointi ( Title, Description, Criticality, Status, User)
- * Bugin poistaminen
  * Bugilistan suodatus (Status ja Criticality)
- * Statuksen muutos drag-and-dropilla
  * Ilmoitukset statuksen muutoksesta (bugia seuraaville käyttäjille)
- * Statistiikka (keskimääräinen ikä, resolution rate)
  * Bugin ilmoittaneen käyttäjän yhteystiedot
+
  * Kaikkien kurssilaisten testattavissa ohjelman esittelyn aikana
 
 *Perusrakenne*
@@ -37,16 +35,24 @@ Controllers
  * User
 
 Views
- * Bug list
- * Bug details
- * Bug edit
- * Event list (history)
- * Filter view
- * User login
- * User list
- * User details
- * User edit view
- * Subscription view (avautuu bugin "Subscribe"-linkistä)
+ * Bug list ( List view )
+  * Listaa kaikki bugit, mahdollisuus järjestellä ja suodattaa
+ * Bug details ( Detail view )
+  * Näyttää kaikki tiedot bugista sivupalkissa ( 2.2.1 )
+ * Bug edit ( Edit view )
+  * Editointinäkymä, jossa voi muokata statusta jne. ( 4 )
+ * Event list ( Inside Detail view? )
+  * Bugin historia, näkyy bugin tietojen alapuolella ( 2.2.2 )
+ * Filter view ( Top view )
+  * Yläpalkissa ( 2.3 )
+ * User login ( Login view )
+  * Ensimmäinen ruutu ( 1 )
+ * User list ( List view )
+  * Lista käyttäjän tilaamista bugeista ( 2.1 )
+ * User details ( Detail view )
+  * Käyttäjän tarkemmat tiedot ja mahdollisuus editoida tilauksia. ( 3.2 )
+ * User edit view ( Edit view )
+  * Editointi-ikkuna ( 4 )
 
 Bugin statukset 
  * ilmoitettu
@@ -61,6 +67,9 @@ Bugin statukset
 *Jälkeenpäin lisättävät ominaisuudet*
 
  * Käyttäjäryhmät ( None, Creator, Tester, Interest ), vastaavat BugGrouppia.
+ * Bugin poistaminen
+ * Statuksen muutos drag-and-dropilla
+ * Statistiikka (keskimääräinen ikä, resolution rate)
 
 
 *Linkit*
