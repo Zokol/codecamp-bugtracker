@@ -10,12 +10,22 @@ http://users.utu.fi/jjholv/model.png
 
 *Perusrakenne*
 
---
+ * Login
+ * Tietojen tallennus tietokantaan tai tiedostoon
+ * Bugilista
+ * Uuden bugin raportointi ( Title, Description, Criticality, Status, User)
+ * Bugin poistaminen
+ * Bugilistan suodatus (Status ja Criticality)
+ * Statuksen muutos drag-and-dropilla
+ * Ilmoitukset statuksen muutoksesta (bugia seuraaville käyttäjille)
+ * Statistiikka (keskimääräinen ikä, resolution rate)
+ * Bugin ilmoittaneen käyttäjän yhteystiedot
+ * Kaikkien kurssilaisten testattavissa ohjelman esittelyn aikana
 
 
 *Jälkeenpäin lisättävät ominaisuudet*
 
---
+ * Käyttäjäryhmät
 
 
 *Linkit*
