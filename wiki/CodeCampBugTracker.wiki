@@ -22,6 +22,39 @@ http://users.utu.fi/jjholv/model.png
  * Bugin ilmoittaneen käyttäjän yhteystiedot
  * Kaikkien kurssilaisten testattavissa ohjelman esittelyn aikana
 
+Models
+ * Bug
+ * User
+ * Subscription
+ * Event
+
+Controllers
+ * Bug
+ * Event
+ * Subscription
+ * User
+
+Views
+ * Bug list
+ * Bug details
+ * Bug edit
+ * Event list (history)
+ * Filter view
+ * User login
+ * User list
+ * User details
+ * User edit view
+ * Subscription view (avautuu bugin "Subscribe"-linkistä)
+
+Bugin statukset 
+ * ilmoitettu
+ * vahvistettu
+ * hylätty
+ * priorisoitu
+ * varattu
+ * korjattu
+ * valmis
+ * ei korjata
 
 *Jälkeenpäin lisättävät ominaisuudet*
 
