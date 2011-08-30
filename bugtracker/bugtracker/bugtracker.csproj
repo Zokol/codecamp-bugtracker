@@ -139,6 +139,28 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Subscription\Create.cshtml" />
+    <Content Include="Views\Subscription\Delete.cshtml" />
+    <Content Include="Views\Subscription\Details.cshtml" />
+    <Content Include="Views\Subscription\Edit.cshtml" />
+    <Content Include="Views\Subscription\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Event\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Bugs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -152,13 +174,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Bugs\Delete.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Subscription\Create.cshtml" />
-    <Content Include="Views\Subscription\Delete.cshtml" />
-    <Content Include="Views\Subscription\Details.cshtml" />
-    <Content Include="Views\Subscription\Edit.cshtml" />
-    <Content Include="Views\Subscription\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

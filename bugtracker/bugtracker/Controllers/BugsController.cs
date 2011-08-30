@@ -48,7 +48,9 @@ namespace bugtracker.Controllers
             {
                 db.Bugs.Add(bug);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                EventController e = new EventController();
+                e.Create(bug.ID, HttpContext.User.Identity.Name);
+                return RedirectToAction("Index");
             }
 
             return View(bug);
