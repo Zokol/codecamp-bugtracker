@@ -1,7 +1,0 @@
-c:\CodeCamp\BugTracker\bugtracker\bin\bugtracker.dll
-c:\CodeCamp\BugTracker\bugtracker\bin\bugtracker.pdb
-c:\CodeCamp\BugTracker\bugtracker\bin\EntityFramework.dll
-c:\CodeCamp\BugTracker\bugtracker\bin\EntityFramework.xml
-c:\CodeCamp\BugTracker\bugtracker\obj\Debug\ResolveAssemblyReference.cache
-c:\CodeCamp\BugTracker\bugtracker\obj\Debug\bugtracker.dll
-c:\CodeCamp\BugTracker\bugtracker\obj\Debug\bugtracker.pdb
