@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using bugtracker.Models;
 
 namespace bugtracker.Controllers
 {
@@ -10,7 +11,15 @@ namespace bugtracker.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            if (User.Identity.IsAuthenticated)
+            {
+                var profile = UserProfile.GetProfile(User.Identity.Name);
+                if (profile!=null) ViewBag.Message = "Tervetuloa " + profile.FirstName + " " + profile.LastName + ".";
+            }
+            else
+            {
+                ViewBag.Message = "Please log on.";
+            }
 
             return View();
         }

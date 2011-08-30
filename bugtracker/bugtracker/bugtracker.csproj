@@ -67,6 +67,7 @@
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
+    <Compile Include="Controllers\UserListController.cs" />
     <Compile Include="Models\Bug.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -75,6 +76,8 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\LogEvent.cs" />
     <Compile Include="Models\Subscription.cs" />
+    <Compile Include="Models\UserList.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +179,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Bugs\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserList\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
