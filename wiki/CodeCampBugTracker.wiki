@@ -25,7 +25,7 @@ http://users.utu.fi/jjholv/model.png
 
 *Jälkeenpäin lisättävät ominaisuudet*
 
- * Käyttäjäryhmät ( None, Creator, Tester, Interest )
+ * Käyttäjäryhmät ( None, Creator, Tester, Interest ), vastaavat BugGrouppia
 
 
 *Linkit*
