@@ -14,9 +14,11 @@ namespace bugtracker.Models
         public int Criticality { get; set; }
         public int Priority { get; set; }
         public int Status { get; set; }
+        public BType BugType { get; set; }
     }
     public class BugDBContext : DbContext
     {
         public DbSet<Bug> Bugs { get; set; }
     }
+    public enum BType:int {Security=1, UI, Core, DB, Comm}
 }
