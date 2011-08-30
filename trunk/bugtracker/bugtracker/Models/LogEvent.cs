@@ -12,7 +12,7 @@ namespace bugtracker.Models
         [Key, Column(Order = 0)]
         public DateTime CreateTime { get; set; }
         [Key, Column(Order = 1)]
-        public Bug EventBug { get; set; }
+        public int BugID { get; set; }
         [Key, Column(Order = 2)]
         public string User { get; set; }
         public string Comment { get; set; }
