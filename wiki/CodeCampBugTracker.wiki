@@ -12,28 +12,23 @@
 
  * Kaikkien kurssilaisten testattavissa ohjelman esittelyn aikana
 
-*Perusrakenne*
+=Perusrakenne=
 
-Models
+*Models*
 
 http://users.utu.fi/jjholv/model.png
 
- * Bug
- * User
- * Subscription
- * Event
-
-Controllers
+*Controllers*
  * Bug
  * Event
  * Subscription
  * User
 
-Views
+*Views*
 http://users.utu.fi/jjholv/2011-08-29%2015.01.31.jpg
 
  * Bug list ( List view )
-  * Listaa kaikki bugit, mahdollisuus järjestellä ja suodattaa
+  * Listaa kaikki bugit, mahdollisuus järjestellä ja suodattaa ( 2.1 )
 
  * Bug details ( Detail view )
   * Näyttää kaikki tiedot bugista sivupalkissa ( 2.2.1 )
@@ -41,7 +36,7 @@ http://users.utu.fi/jjholv/2011-08-29%2015.01.31.jpg
  * Bug edit ( Edit view )
   * Editointinäkymä, jossa voi muokata statusta jne. ( 4 )
 
- * Event list ( Inside Detail view? )
+ * Event list ( List view )
   * Bugin historia, näkyy bugin tietojen alapuolella ( 2.2.2 )
 
  * Filter view ( Top view )
@@ -54,7 +49,10 @@ http://users.utu.fi/jjholv/2011-08-29%2015.01.31.jpg
   * Lista käyttäjän tilaamista bugeista ( 2.1 )
 
  * User details ( Detail view )
-  * Käyttäjän tarkemmat tiedot ja mahdollisuus editoida tilauksia. ( 3.2 )
+  * Käyttäjän tarkemmat tiedot ja mahdollisuus editoida tilauksia. ( 3.2.1 )
+
+ * User history view
+  * Käyttäjän tekemät eventit (3.2.2)
 
  * User edit view ( Edit view )
   * Editointi-ikkuna ( 4 )
