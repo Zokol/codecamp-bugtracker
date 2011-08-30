@@ -10,18 +10,22 @@ namespace bugtracker.Models
     {
         public String Username { set; get; }
         public int SubscriptionID { set; get; }
-        public Bug SubscriptionBug { set; get; }
-        public SType SubscriptionType { set; get; }
+        public int SubscriptionBugID { set; get; }
+        public int SubsTypeID { set; get; }
 
     }
 
     public class SubscriptionDBContext : DbContext
     {
         public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<SubscriptionType> SubscriptionTypes { get; set; }
     }
 
-    public enum SType : int { None, Creator, Tester, Interest }
-
+    public class SubscriptionType
+    {
+        public int ID { get; set; }
+        public String Name { get; set; }
+    }
 
 
 }

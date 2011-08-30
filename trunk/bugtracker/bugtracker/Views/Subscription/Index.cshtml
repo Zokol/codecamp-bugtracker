@@ -26,8 +26,9 @@
             @Html.DisplayFor(modelItem => item.SubscriptionID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubscriptionType)
+            @Html.DisplayFor(modelItem => item.SubsTypeID);
         </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SubscriptionID }) |
             @Html.ActionLink("Details", "Details", new { id=item.SubscriptionID }) |
@@ -35,5 +36,6 @@
         </td>
     </tr>
 }
+
 
 </table>

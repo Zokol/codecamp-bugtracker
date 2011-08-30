@@ -47,6 +47,7 @@ namespace bugtracker.Controllers
             if (ModelState.IsValid)
             {
                 subscription.Username = HttpContext.User.Identity.Name;
+                
                 db.Subscriptions.Add(subscription);
 
                 db.SaveChanges();
