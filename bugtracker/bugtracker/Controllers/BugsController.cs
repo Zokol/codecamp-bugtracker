@@ -82,6 +82,7 @@ namespace bugtracker.Controllers
                 comment = "Tyhjä";
                 int typeID = 0;
                 Bug orig = DataController.getBugByID(bug.ID);
+
                 EventController e = new EventController();
                 if (!orig.Title.Equals(bug.Title))
                 {
