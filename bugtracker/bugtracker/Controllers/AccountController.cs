@@ -56,7 +56,11 @@ namespace bugtracker.Controllers
 
         public ActionResult LogOff()
         {
+            var profile = UserProfile.GetProfile(Membership.GetUser().UserName);
+            profile.LastSignOff = DateTime.Now;
+            profile.Save();
             FormsAuthentication.SignOut();
+            
 
             return RedirectToAction("Index", "Home");
         }
@@ -88,6 +92,7 @@ namespace bugtracker.Controllers
                     var profile = UserProfile.GetProfile(model.UserName);
                     profile.FirstName = model.FirstName;
                     profile.LastName = model.LastName;
+                    profile.LastSignOff = DateTime.Now;
                     profile.Save();
 
                     return RedirectToAction("Index", "Home");

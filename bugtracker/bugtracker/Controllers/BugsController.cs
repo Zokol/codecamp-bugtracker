@@ -87,39 +87,39 @@ namespace bugtracker.Controllers
                 if (!orig.Title.Equals(bug.Title))
                 {
                     typeID = 1;
-                    comment = "Edellinen nimi: " + orig.Title;
+                    comment = "Title: "+orig.Title + "--->" + bug.Title;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.Description.Equals(bug.Description))
                 {
                     typeID = 2;
-                    comment = "Edellinen kuvaus: " + orig.Description;
+                    comment = "Description: " + orig.Description + "--->" + bug.Description;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.Criticality.Equals(bug.Criticality))
                 {
                     typeID = 4;
-                    comment = "Edellinen kriittisyys: " + orig.Criticality;
+                    comment = "Criticality: " + orig.Criticality + "--->" + bug.Criticality;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 } 
                 if (!orig.Priority.Equals(bug.Priority))
                 {
                     typeID = 5;
-                    comment = "Edellinen prioriteetti: " + orig.Priority;
+                    comment = "Priority: " + orig.Priority + "--->" + bug.Priority;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.Status.Equals(bug.Status))
                 {
                     typeID = 6;
-                    comment = "Edellinen status: " + orig.Status;
+                    comment = "Status: " + orig.Status + "--->" + bug.Status;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.BugTypeID.Equals(bug.BugTypeID))
                 {
                     typeID = 7;
-                    comment = "Edellinen tyyppi: " + orig.BugTypeID;
+                    comment = "Type: " + orig.BugTypeID + "--->" + bug.BugTypeID;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
-                }
+                } 
                 db.Entry(bug).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

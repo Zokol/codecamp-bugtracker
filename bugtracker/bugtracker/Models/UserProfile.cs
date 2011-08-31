@@ -35,19 +35,18 @@ namespace bugtracker.Models
             }
         }
 
-        [Display(Name = "UserID")]
-        public virtual int UserID
+        [Display(Name = "LastSignOff")]
+        public virtual DateTime LastSignOff
         {
             get
             {
-                return ((int)(this.GetPropertyValue("UserID")));
+                return ((DateTime)this.GetPropertyValue("LastSignOff"));
             }
             set
             {
-                this.SetPropertyValue("UserID", value);
+                this.SetPropertyValue("LastSignOff", value);
             }
         }
-
         public static UserProfile GetProfile(string username)
         {
             return Create(username) as UserProfile;

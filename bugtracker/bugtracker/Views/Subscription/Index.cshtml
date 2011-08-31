@@ -1,40 +1,33 @@
-﻿@model IEnumerable<bugtracker.Models.Subscription>
+﻿@model IEnumerable<bugtracker.Models.LogEvent>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Changes of interest</h2>
 <table>
-    <tr>
-        <th>
-            Username
-        </th>
-        <th></th>
-    </tr>
+<tr>
+<td>User who changed</td>
+<td>When changed</td>
+<td>Comment / What changed</td>
+<td>Bug ID#</td>
+</tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Username)
+            @Html.DisplayFor(modelItem => item.User)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubscriptionID)
+            @Html.DisplayFor(modelItem => item.CreateTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SubsTypeID);
+            @Html.DisplayFor(modelItem => item.Comment)
         </td>
-
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SubscriptionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SubscriptionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SubscriptionID })
+            @Html.DisplayFor(modelItem => item.BugID);
         </td>
-    </tr>
+</tr>
 }
 
 
