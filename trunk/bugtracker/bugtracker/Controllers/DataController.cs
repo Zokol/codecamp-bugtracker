@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using bugtracker.Models;
 using System.Data.Entity;
+using System.Web.Security;
 
 namespace bugtracker.Controllers
 {
@@ -40,6 +41,26 @@ namespace bugtracker.Controllers
         {
             return subsdb.Subscriptions
                 .Where(s => s.Username == username);
+        }
+
+        public static IEnumerable<LogEvent> getRecentChangedStatusListOfCurrentUser()
+        {
+            DateTime lastsignoff = UserProfile.GetProfile(Membership.GetUser().UserName).LastSignOff;
+            List<LogEvent> events = GetEventDb().Events
+                .Where(e => (e.CreateTime > lastsignoff & e.EventType == 6)).ToList<LogEvent>();
+            return events;
+
+            /* To get the IEnumerable<Bug> of those bugs whose status has changed:
+             * public static IEnumerable<Bug> getRecentChangedBugListOfCurrentUser()
+             * {
+             * like it is now except;
+             * return from e in events
+                   join b in getAllBugs()
+                   on e.BugID equals b.ID
+                   select b; 
+             *}
+           */
+
         }
 
         public static IEnumerable<Bug> getBugsOfUser(string username)

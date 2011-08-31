@@ -146,10 +146,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Subscription\Create.cshtml" />
-    <Content Include="Views\Subscription\Delete.cshtml" />
-    <Content Include="Views\Subscription\Details.cshtml" />
-    <Content Include="Views\Subscription\Edit.cshtml" />
     <Content Include="Views\Subscription\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
