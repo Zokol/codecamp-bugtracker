@@ -6,9 +6,9 @@ using System.Web.Security;
 
 namespace bugtracker.Models
 {
-    public class UserBugsList
+    public class UserBugList
     {
         public string User { get; set; }
-
+        public IEnumerable<Bug> Bugs { set; get; }
     }
 }
