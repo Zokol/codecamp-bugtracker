@@ -13,6 +13,9 @@
  * Kaikkien kurssilaisten testattavissa ohjelman esittelyn aikana
 
 * Keskiviikko-illalla mietitty TO-DO lista *
+
+http://users.utu.fi/jjholv/taulu1.jpg
+
  * Bugilistan järjestäminen otsikoista klikkaamalla
 
  * Yläpalkki:
