@@ -67,7 +67,7 @@ namespace bugtracker.Controllers
         public ActionResult Edit(int id)
         {
             Bug bug = db.Bugs.Find(id);
-            return View(bug);
+            return PartialView(bug);
         }
 
         //
