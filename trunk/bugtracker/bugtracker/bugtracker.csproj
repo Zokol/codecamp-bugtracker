@@ -190,6 +190,7 @@
     <None Include="ClassDiagram1.cd" />
     <Content Include="Views\BugEventList\Details.cshtml" />
     <Content Include="Views\BugEventList\Index.cshtml" />
+    <Content Include="Views\Home\Testi.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
