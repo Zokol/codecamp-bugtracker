@@ -48,9 +48,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-          @* @Html.ActionLink(item.ID+"", "Details", new { id=item.ID }) | --> *@
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            <a href="#" onclick="loadPartialView('Bugs', 'Details', @item.ID)">Load partial view</a>
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
+            <a href="#" onclick="loadPartialView('Bugs', 'Details', @item.ID, 'result')">Load partial view</a>
             
         </td>
     </tr>
