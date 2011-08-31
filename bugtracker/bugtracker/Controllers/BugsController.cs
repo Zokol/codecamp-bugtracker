@@ -26,8 +26,13 @@ namespace bugtracker.Controllers
 
         public ViewResult Details(int id)
         {
-            Bug bug = db.Bugs.Find(id);
-            return View(bug);
+            BugEventList bel = new BugEventList
+            {
+                Bug = DataController.getBugByID(id),
+                Events = DataController.getEventsOfBug(id)
+            };
+            //Bug bug = db.Bugs.Find(id);
+            return View(bel);
         }
 
         //
