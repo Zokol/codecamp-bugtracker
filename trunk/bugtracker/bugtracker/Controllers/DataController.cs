@@ -8,16 +8,13 @@ using System.Data.Entity;
 
 namespace bugtracker.Controllers
 {
-    public class DataController : Controller
+    public static class DataController
     {
 
         public static BugDBContext bugdb = new BugDBContext();
         public static SubscriptionDBContext subsdb = new SubscriptionDBContext();
         public static EventDBContext eventdb = new EventDBContext();
         
-
-
-
         public static Bug getBugByID(int id)
         {
             return bugdb.Bugs
@@ -45,12 +42,6 @@ namespace bugtracker.Controllers
             return eventdb.Events
                 .Where(e => e.BugID == bugid);
         }
-
-        
-
-
-
-
 
     }
 }
