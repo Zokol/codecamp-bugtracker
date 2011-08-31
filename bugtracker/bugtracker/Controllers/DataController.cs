@@ -30,9 +30,9 @@ namespace bugtracker.Controllers
             return new EventDBContext();
         }
         
-        public static Bug getBugByID(int id)
+        public static Bug getBugByID(int id) /* Updated */
         {
-            return bugdb.Bugs
+            return GetBugDb().Bugs
                 .First(b => b.ID == id);
         }
 
@@ -42,9 +42,28 @@ namespace bugtracker.Controllers
                 .Where(s => s.Username == username);
         }
 
-        public static IEnumerable<Subscription> getBugsOfUser(string username)
+        public static IEnumerable<Bug> getBugsOfUser(string username)
         {
-            return null;
+            List<LogEvent> events = GetEventDb().Events.Where(u => u.User == username).ToList<LogEvent>();
+            List<Bug> bugs = getAllBugs().ToList<Bug>();
+            List<Bug> result = new List<Bug>();
+            foreach (LogEvent b in events)
+            {
+                foreach (Bug e in bugs)
+                {
+                    if (b.BugID == e.ID) { result.Add(e); }
+                }
+            }
+
+
+
+            return result.AsEnumerable<Bug>();
+
+            //select new {c.Name, o.OrderNumber};
+            
+           /* eventdb.Events
+                .Where(u => u.User == username)
+                .Join(*/
         }
 
         public static IEnumerable<Bug> getAllBugs()
