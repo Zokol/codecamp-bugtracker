@@ -28,20 +28,6 @@ namespace bugtracker.Models
         public String Name { get; set; }
     }
 
-    /*public class WrapperModel1 : Bug, IEnumerable<Bug>, IList<Bug> { }
-    public class WrapperModel2 : LogEvent, IEnumerable<Bug>, IList<Bug> { }
-
-    public class WrapperLayout
-    {
-        WrapperModel1 wm1 = new WrapperModel1();
-        WrapperModel2 wm2 = new WrapperModel2();
-
-        public WrapperLayout()
-        {
-
-        }
-    }*/
-
-
-
+    
+    
 }

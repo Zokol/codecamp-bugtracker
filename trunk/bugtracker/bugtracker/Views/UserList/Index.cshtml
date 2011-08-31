@@ -17,13 +17,13 @@
 @foreach (var item in Model.UserProfiles) {
     <tr>
         <td>
-            @Html.DisplayFor(u => item.UserID);
+            @Html.DisplayFor(u => item.UserID)
         </td>
         <td>
-            @Html.DisplayFor(u => item.FirstName);
+            @Html.DisplayFor(u => item.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(u => item.LastName);
+            @Html.DisplayFor(u => item.LastName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
