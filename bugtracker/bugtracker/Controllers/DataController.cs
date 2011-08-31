@@ -16,11 +16,7 @@ namespace bugtracker.Controllers
         public static EventDBContext eventdb = new EventDBContext();
         
 
-        public ActionResult Index()
-        {
-            return View();
-            
-        }
+
 
         public static Bug getBugByID(int id)
         {
@@ -39,10 +35,15 @@ namespace bugtracker.Controllers
             return null;
         }
 
-        public static IEnumerable<LogEvent> getEventsOfBug(Bug b)
+        public static IEnumerable<Bug> getAllBugs()
+        {
+            return bugdb.Bugs;
+        }
+
+        public static IEnumerable<LogEvent> getEventsOfBug(int bugid)
         {
             return eventdb.Events
-                .Where(e => e.BugID == b.ID);
+                .Where(e => e.BugID == bugid);
         }
 
         
