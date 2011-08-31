@@ -112,6 +112,8 @@ page width. Or, you can specify an exact pixel width. */
     padding: 30px 30px 15px 30px;
     background-color: #fff;
     margin-bottom: 30px;
+    height: auto;
+    overflow: auto;
     _height: 1px; /* only IE6 applies CSS properties starting with an underscore */
 }
 
@@ -123,6 +125,21 @@ page width. Or, you can specify an exact pixel width. */
     line-height: normal;
     margin: 0;
     font-size: .9em;
+}
+
+#listview
+{
+    float: left;
+    overflow: auto;
+    background-color: #fff;
+}
+
+#detailview
+{
+    float: right;
+    overflow: auto;
+    margin: 0 10px 0 0;
+    background-color: #fff;
 }
 
 /* TAB MENU   

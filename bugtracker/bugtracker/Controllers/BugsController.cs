@@ -24,7 +24,7 @@ namespace bugtracker.Controllers
         //
         // GET: /Bugs/Details/5
 
-        public ViewResult Details(int id)
+        public ActionResult Details(int id)
         {
             BugEventList bel = new BugEventList
             {
@@ -32,7 +32,7 @@ namespace bugtracker.Controllers
                 Events = DataController.getEventsOfBug(id)
             };
             //Bug bug = db.Bugs.Find(id);
-            return View(bel);
+            return PartialView(bel);
         }
 
         //
