@@ -14,6 +14,21 @@ namespace bugtracker.Controllers
         public static BugDBContext bugdb = new BugDBContext();
         public static SubscriptionDBContext subsdb = new SubscriptionDBContext();
         public static EventDBContext eventdb = new EventDBContext();
+
+        public static BugDBContext GetBugDb()
+        {
+            return new BugDBContext();
+        }
+
+        public static SubscriptionDBContext GetSubscriptionDb()
+        {
+            return new SubscriptionDBContext();
+        }
+
+        public static EventDBContext GetEventDb()
+        {
+            return new EventDBContext();
+        }
         
         public static Bug getBugByID(int id)
         {
