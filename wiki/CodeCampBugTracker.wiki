@@ -41,11 +41,12 @@ http://users.utu.fi/jjholv/taulu1.jpg
 
  * Bug view näkymä
   * Edit nappula (pop-up)
+<br>
+<br>
+----
+=.old=
 
-=Vanhat suunnitelmat=
-=*****************************************************************=
-
-=Perusrakenne=
+==Perusrakenne==
 
 *Models*
 
