@@ -5,9 +5,9 @@
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
     <script type="text/javascript">
-        function loadPartialView(type, view, id) {
+        function loadPartialView(type, view, id, divid) {
             //Populate the contents of the placeholder with the result returned by the action method HomeController.PartialGrid
-            $('#result').load( type + '/' + view + '/' + id);
+            $('#' + divid).load( type + '/' + view + '/' + id);
         }
     </script>
 </head>
