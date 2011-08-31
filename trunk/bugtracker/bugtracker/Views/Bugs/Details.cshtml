@@ -1,4 +1,4 @@
-﻿@model bugtracker.Models.Bug
+﻿@model bugtracker.Models.BugEventList
 
 @{
     ViewBag.Title = "Details";
@@ -7,34 +7,75 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>Bug</legend>
+    <legend>Bug #@Html.DisplayFor(model => model.Bug.ID)</legend>
 
     <div class="display-label">Title</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Title)
+        @Html.DisplayFor(model => model.Bug.Title)
     </div>
 
     <div class="display-label">Description</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
+        @Html.DisplayFor(model => model.Bug.Description)
     </div>
 
     <div class="display-label">Criticality</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Criticality)
+        @Html.DisplayFor(model => model.Bug.Criticality)
     </div>
 
     <div class="display-label">Priority</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Priority)
+        @Html.DisplayFor(model => model.Bug.Priority)
     </div>
 
     <div class="display-label">Status</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Status)
+        @Html.DisplayFor(model => model.Bug.Status)
     </div>
+
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<h2>Event History</h2>
+
+<fieldset>
+<table>
+    <tr>
+        <th>
+            Create Time
+        </th>
+        <th>
+            BugID
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Comment
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Events)
+{
+    if (Model.Bug.ID == item.BugID)
+    {        
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BugID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+    </tr>
+    }
+}
+
+</table>
+</fieldset>
