@@ -55,19 +55,18 @@ namespace bugtracker.Controllers
         }
 
 
-        // Kun on luotu uusi bugi
-        public void Create(int bugID, string username)
+        public void Create(int bugID, string username, int typeID, string comment)
         {
             LogEvent logevent = new LogEvent();
             logevent.BugID = bugID;
             logevent.User = username;
             logevent.CreateTime = DateTime.Now;
-            logevent.Comment = "Bug created";
+            logevent.EventType = typeID;
+            logevent.Comment = comment;
 
             db.Events.Add(logevent);
             db.SaveChanges();
 
-           // return View(logevent);
         }
         
         

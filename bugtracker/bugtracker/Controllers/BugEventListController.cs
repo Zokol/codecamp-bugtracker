@@ -20,12 +20,12 @@ namespace bugtracker.Controllers
 
         //
         // GET: /BugEventList/Details/5
-        public ViewResult Details()
+        public ViewResult Details(int id)
         {
-            List<LogEvent> events = DataController.getEventsOfBug(2).ToList<LogEvent>();
+            List<LogEvent> events = DataController.getEventsOfBug(id).ToList<LogEvent>();
             BugEventList bel = new BugEventList
             { 
-                Bug = DataController.getBugByID(2),
+                Bug = DataController.getBugByID(id),
                 Events = events
             };
 

@@ -16,6 +16,7 @@ namespace bugtracker.Models
         public int Status { get; set; }
         public int BugTypeID { get; set; }
     }
+
     public class BugDBContext : DbContext
     {
         public DbSet<Bug> Bugs { get; set; }
@@ -27,4 +28,5 @@ namespace bugtracker.Models
         public int ID { get; set; }
         public String Name { get; set; }
     }
+
 }
