@@ -3,3 +3,5 @@
 *Linkit*
 
   * http://www.slideshare.net/tomijuhola/jquery-introduction-9043697
+
+  * Draggable content: http://www.dhtmlgoodies.com/scripts/dragable-content/dragable-content.html
