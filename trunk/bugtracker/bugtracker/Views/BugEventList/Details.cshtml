@@ -1,0 +1,33 @@
+﻿@model bugtracker.Models.BugEventList
+
+@{
+    ViewBag.Title = "BugEventList";
+}
+
+<h2>BugEventList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Events) {
+    <tr>
+        <td>
+        @Html.DisplayFor(u => item.BugID)
+        </td>
+        <td>
+        @Html.DisplayFor(u => item.Comment)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
