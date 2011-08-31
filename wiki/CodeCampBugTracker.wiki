@@ -12,6 +12,32 @@
 
  * Kaikkien kurssilaisten testattavissa ohjelman esittelyn aikana
 
+* Keskiviikko-illalla mietitty TO-DO lista *
+ * Bugilistan järjestäminen otsikoista klikkaamalla
+
+ * Yläpalkki:
+  * Logo 
+  * Filteröinti: status (näyttää vain tietyn statuksen bugit) ja criticality (valittu aste ja siitä ylös). Drop-down-lista.
+  * Bugin lisäys nappula (pop-up)
+  * Subscriptions nappula (avautuu vasempaan palkkiin) - väri vaihtuu jos uusia viime loggauksen jälkeen
+  * Bug ID Search
+
+ * Subscriptions näkymä: Lista käyttäjän Subscriptioneista (filteröity lista bugeja)
+
+ * Status Events: käyttäjän seuraamien bugien statusmuutokset (lista bugeista)
+
+ * Profiili näkymä (pop-up)
+  * Edit nappula: tekstit muuttuu kentiksi, johon voi korjata
+   * Password
+   * e-mail
+
+ * Bug add/edit näkymä
+  * Kommenttikenttä
+  * Näkymään drop-down listat
+
+ * Bug view näkymä
+  * Edit nappula (pop-up)
+
 =Perusrakenne=
 
 *Models*
