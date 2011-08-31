@@ -11,7 +11,7 @@ namespace bugtracker.Controllers
 { 
     public class EventController : Controller
     {
-        private EventDBContext db = new EventDBContext();
+        private EventDBContext db = DataController.GetEventDb();
 
         //
         // GET: /Event/

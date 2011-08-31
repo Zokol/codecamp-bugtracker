@@ -11,7 +11,7 @@ namespace bugtracker.Controllers
 { 
     public class SubscriptionController : Controller
     {
-        private SubscriptionDBContext db = new SubscriptionDBContext();
+        private SubscriptionDBContext db = DataController.GetSubscriptionDb();
 
         //
         // GET: /Subscription/

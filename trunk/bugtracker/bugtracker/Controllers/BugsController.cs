@@ -11,7 +11,7 @@ namespace bugtracker.Controllers
 { 
     public class BugsController : Controller
     {
-        private BugDBContext db = new BugDBContext();
+        private BugDBContext db = DataController.GetBugDb();
 
         //
         // GET: /Bugs/
