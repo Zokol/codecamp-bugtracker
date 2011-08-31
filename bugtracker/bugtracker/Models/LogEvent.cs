@@ -15,6 +15,7 @@ namespace bugtracker.Models
         public int BugID { get; set; }
         [Key, Column(Order = 2)]
         public string User { get; set; }
+        public int EventType { set; get; }
         public string Comment { get; set; }
     }
 

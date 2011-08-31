@@ -85,6 +85,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\ASPNETDB2.MDF" />
+    <Content Include="App_Data\aspnetdb2_log.ldf">
+      <DependentUpon>ASPNETDB2.MDF</DependentUpon>
+    </Content>
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
@@ -187,7 +191,6 @@
     <Content Include="Views\UserList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <Content Include="Views\BugEventList\Details.cshtml" />
     <Content Include="Views\BugEventList\Index.cshtml" />
     <Content Include="Views\Home\Testi.cshtml" />
