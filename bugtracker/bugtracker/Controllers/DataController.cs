@@ -62,7 +62,7 @@ namespace bugtracker.Controllers
         public static IEnumerable<Bug> getSubscribedBugsOfCurrentUser()
         {
             List<Subscription> subs = GetSubscriptionDb().Subscriptions
-                .Where(sub => sub.Username == Membership.GetUser().UserName).ToList<Subscription>();
+                .Where(sub => sub.Username.Equals(Membership.GetUser().UserName)).ToList<Subscription>();
             List<Bug> result = new List<Bug>();
             foreach (Subscription s in subs)
             {
