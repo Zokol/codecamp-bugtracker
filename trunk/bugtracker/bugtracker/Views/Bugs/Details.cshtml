@@ -39,7 +39,7 @@
     <hr/>
     <div id="detailviewbuttons">
         <!-- #dialog is the id of a DIV defined in the code below -->
-        <a href="#dialog" onclick="showModalPopup('Bugs/Edit/@Model.Bug.ID')">Edit</a>
+        <a href="#dialog" onclick="showModalPopup('/Bugs/Edit/@Model.Bug.ID')">Edit</a>
         | 
         @{
           if ( ViewBag.alreadySubscribed == true ) {  
@@ -52,7 +52,7 @@
           }
         }     
         |
-        <a href="#dialog" onclick="showModalPopup('Bugs/Delete/@Model.Bug.ID')">Delete</a>
+        <a href="#dialog" onclick="showModalPopup('/Bugs/Delete/@Model.Bug.ID')">Delete</a>
     </div>
 
 </fieldset>
