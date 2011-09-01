@@ -68,6 +68,7 @@
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
+    <Compile Include="Controllers\UserBugListController.cs" />
     <Compile Include="Controllers\UserListController.cs" />
     <Compile Include="Models\Bug.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -84,11 +85,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
     <Content Include="App_Data\Bugs.sdf" />
     <Content Include="App_Data\Events.sdf" />
     <Content Include="App_Data\Subscriptions.sdf" />
     <Content Include="bin\bugtracker.dll" />
     <Content Include="bin\bugtracker.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
     <Content Include="Global.asax" />
     <Content Include="obj\Debug\bugtracker.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\bugtracker.dll" />

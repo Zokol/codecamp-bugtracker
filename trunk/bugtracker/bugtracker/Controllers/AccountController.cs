@@ -114,7 +114,7 @@ namespace bugtracker.Controllers
         [Authorize]
         public ActionResult ChangePassword()
         {
-            return View();
+            return PartialView();
         }
 
         //
@@ -151,7 +151,7 @@ namespace bugtracker.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return PartialView(model);
         }
 
         //
@@ -159,7 +159,12 @@ namespace bugtracker.Controllers
 
         public ActionResult ChangePasswordSuccess()
         {
-            return View();
+            return PartialView();
+        }
+
+        public ActionResult Profile(String n)
+        {
+            return PartialView(UserProfile.GetProfile(n));
         }
 
         #region Status Codes
