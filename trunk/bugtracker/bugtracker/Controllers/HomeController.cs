@@ -14,7 +14,7 @@ namespace bugtracker.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var profile = UserProfile.GetProfile(User.Identity.Name);
-                if (profile!=null) ViewBag.Message = "Tervetuloa " + profile.FirstName + " " + profile.LastName + ".";
+                if (profile!=null) ViewBag.Message = "Welcome " + profile.FirstName + " " + profile.LastName + ".";
             }
             else
             {
