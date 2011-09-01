@@ -5,13 +5,14 @@
 }
 
 <h2>Changes of interest</h2>
-<table>
+
 <tr>
 <td>User who changed</td>
 <td>When changed</td>
 <td>Comment / What changed</td>
 <td>Bug ID#</td>
 </tr>
+
 
 @foreach (var item in Model) {
     <tr>
@@ -25,7 +26,7 @@
             @Html.DisplayFor(modelItem => item.Comment)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BugID);
+            <a href="#" onclick="loadPartialView('Subscription/Details?Sid=@item.SubscriptionID', 'detailview')">Details</a>
         </td>
 </tr>
 }
