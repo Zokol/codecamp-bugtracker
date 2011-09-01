@@ -29,35 +29,28 @@ namespace bugtracker.Controllers
             if (string.IsNullOrWhiteSpace(sortColumn))
                 sortColumn = "ID";
 
-            IEnumerable<Bug> q = null;
-            if (Membership.GetUser() == null) q = new List<Bug>().AsEnumerable<Bug>();
-            else
-            {
+            int sortBy = 0;
+            if (sortColumn.Equals("ID"))
+                sortBy = 0;
+            else if (sortColumn.Equals("Priority"))
+                sortBy = 1;
+            else if (sortColumn.Equals("Status"))
+                sortBy = 2;
+            else if (sortColumn.Equals("Criticality"))
+                sortBy = 3;
+            else if (sortColumn.Equals("Description"))
+                sortBy = 4;
+            else if (sortColumn.Equals("Title"))
+                sortBy = 5;
+            else if (sortColumn.Equals("Type"))
+                sortBy = 6;
 
-                if (sortColumn.Equals("ID") && asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.ID);
-                else if (sortColumn.Equals("ID") && !asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.ID);
-                else if (sortColumn.Equals("Criticality") && asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.Criticality);
-                else if (sortColumn.Equals("Criticality") && !asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.Criticality);
-                else if (sortColumn.Equals("Priority") && asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.PriorityID);
-                else if (sortColumn.Equals("Priority") && !asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.PriorityID);
-                else if (sortColumn.Equals("Status") && asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.StatusID);
-                else if (sortColumn.Equals("Status") && !asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.StatusID);
-
-                else
-                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.ID);
-            }
+            List<Bug> q = DataController.OrderListByColumn(DataController.GetBugDb().Bugs.ToList(), sortBy, asc);
+            
             ViewBag.sortColumn = sortColumn;
-            ViewBag.asc = asc.Value;
+            ViewBag.asc = !asc.Value;
 
-            return View(q.ToList());
+            return View(q);
         }
 
         //
@@ -91,6 +84,7 @@ namespace bugtracker.Controllers
 
         public ActionResult Create()
         {
+            ViewData["BugTypes"] = (IEnumerable<BugType>) DataController.GetBugDb().BugTypes;
             return View();
         } 
 
@@ -102,6 +96,7 @@ namespace bugtracker.Controllers
         {
             if (ModelState.IsValid)
             {
+                //bug.BugTypeID = ViewData["BType"];
                 db.Bugs.Add(bug);
                 db.SaveChanges();
                 EventController e = new EventController();
