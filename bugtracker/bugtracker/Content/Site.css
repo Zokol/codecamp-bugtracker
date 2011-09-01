@@ -109,7 +109,7 @@ page width. Or, you can specify an exact pixel width. */
 #main
 {
     padding: 30px 30px 15px 30px;
-    background-color: #fff;
+    background-color: #eee;
     margin-bottom: 30px;
     height: auto;
     overflow: auto;
@@ -130,17 +130,18 @@ page width. Or, you can specify an exact pixel width. */
 {
     float: left;
     overflow: auto;
-    background-color: #fff;
+    background-color: #eee;
 }
 
 #detailview
 {
     float: right;
     overflow: auto;
-    margin: 0 10px 0 0;
-    background-color: #fff;
+    margin: 20px;
+    background-color: #eee;
     width: 400px;
 }
+
 
 #detailviewbuttons
 {
@@ -281,7 +282,7 @@ table th
 {
   padding: 6px 5px;
   text-align: left;
-  background-color: #e8eef4; 
+  background-color: #ddd; 
   border: solid 1px #e8eef4; 
 }
 
