@@ -84,7 +84,7 @@ namespace bugtracker.Controllers
 
         public ActionResult Create()
         {
-            ViewData["BugTypes"] = (IEnumerable<BugType>) DataController.GetBugDb().BugTypes;
+            ViewData["BugTypes"] = (IEnumerable<BugType>)DataController.getBugTypes();
             return View();
         } 
 

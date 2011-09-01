@@ -23,4 +23,10 @@ namespace bugtracker.Models
     {
         public DbSet<LogEvent> Events { get; set; }
     }
+
+    public class LogEventType
+    {
+        public int ID { get; set; }
+        public String Name { get; set; }
+    }
 }
