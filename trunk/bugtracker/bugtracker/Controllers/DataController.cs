@@ -108,6 +108,20 @@ namespace bugtracker.Controllers
             return GetBugDb().Bugs;
         }
 
+        public static List<String> getBugTypeStrings()
+        {
+            List<String> result = new List<string>();
+            foreach (BugType t in GetBugDb().BugTypes)
+                result.Add(t.Name);
+            return result;
+        }
+
+        public static String getBugTypeString(int bugtype)
+        {
+            return GetBugDb().BugTypes
+                .First(bt => bt.ID == bugtype).Name;
+        }
+
         public static IEnumerable<LogEvent> getEventsOfBug(int bugid)
         {
             return eventdb.Events
