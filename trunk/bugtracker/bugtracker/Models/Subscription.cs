@@ -9,6 +9,7 @@ namespace bugtracker.Models
     public class Subscription
     {
         public String Username { set; get; }
+        
         public int SubscriptionID { set; get; }
         public int SubscriptionBugID { set; get; }
         public int SubsTypeID { set; get; }
@@ -19,6 +20,7 @@ namespace bugtracker.Models
     {
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<SubscriptionType> SubscriptionTypes { get; set; }
+
     }
 
     public class SubscriptionType

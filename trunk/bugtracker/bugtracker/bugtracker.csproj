@@ -70,6 +70,7 @@
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\UserBugListController.cs" />
     <Compile Include="Controllers\UserListController.cs" />
+    <Compile Include="HtmlExtensions.cs" />
     <Compile Include="Models\Bug.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

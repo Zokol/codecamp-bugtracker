@@ -26,6 +26,8 @@ namespace bugtracker.Controllers
             return new SubscriptionDBContext();
         }
 
+
+
         public static EventDBContext GetEventDb()
         {
             return new EventDBContext();
@@ -53,6 +55,7 @@ namespace bugtracker.Controllers
 
         public static IEnumerable<LogEvent> getChangedStatusListOfCurrentUserSinceCheck()
         {
+            if (Membership.GetUser() == null) return new List<LogEvent>();
             DateTime lastcheck = UserProfile.GetProfile(Membership.GetUser().UserName).LastNotificationCheck;
             List<LogEvent> events = GetEventDb().Events
                 .Where(e => (e.CreateTime > lastcheck & e.EventType == 6)).ToList<LogEvent>();
@@ -61,9 +64,11 @@ namespace bugtracker.Controllers
 
         public static IEnumerable<Bug> getSubscribedBugsOfCurrentUser()
         {
+            if (Membership.GetUser() == null) return new List<Bug>();
             string user = Membership.GetUser().UserName;
             List<Subscription> subs = GetSubscriptionDb().Subscriptions
                 .Where(sub => sub.Username == user).ToList<Subscription>();
+
             List<Bug> result = new List<Bug>();
             foreach (Subscription s in subs)
             {
@@ -99,6 +104,7 @@ namespace bugtracker.Controllers
 
         public static IEnumerable<Bug> getAllBugs()
         {
+            if (Membership.GetUser() == null) return new List<Bug>();
             return bugdb.Bugs;
         }
 
