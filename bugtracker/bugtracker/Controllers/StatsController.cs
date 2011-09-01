@@ -56,6 +56,8 @@ namespace bugtracker.Controllers
             }
 
             ViewBag.Totalusers = userstats.Count;
+            ViewBag.TotalBugs = DataController.getAllBugs().Count();
+            ViewBag.TotalEvents = DataController.GetEventDb().Events.Count();
 
             return View(userstats);
         }
