@@ -232,6 +232,8 @@
     <Content Include="Views\Subscription\Details.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Stats\Index.cshtml" />
+    <Content Include="Views\Stats\Details.cshtml" />
+    <Content Include="Views\Stats\Global.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
