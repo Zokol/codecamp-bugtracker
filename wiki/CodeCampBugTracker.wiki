@@ -2,12 +2,12 @@
 
 *Worklist*
 
- * Login
- * Tietojen tallennus tietokantaan tai tiedostoon
- * Bugilista
- * Uuden bugin raportointi ( Title, Description, Criticality, Status, User)
+ * Login <img src="http://www.clker.com/cliparts/0/f/7/0/11954234311954389563ok_mark_h_kon_l_vdal_02.svg.med.png" height=10px />
+ * Tietojen tallennus tietokantaan tai tiedostoon <img src="http://www.clker.com/cliparts/0/f/7/0/11954234311954389563ok_mark_h_kon_l_vdal_02.svg.med.png" height=10px />
+ * Bugilista <img src="http://www.clker.com/cliparts/0/f/7/0/11954234311954389563ok_mark_h_kon_l_vdal_02.svg.med.png" height=10px />
+ * Uuden bugin raportointi ( Title, Description, Criticality, Status, User) <img src="http://www.clker.com/cliparts/0/f/7/0/11954234311954389563ok_mark_h_kon_l_vdal_02.svg.med.png" height=10px />
  * Bugilistan suodatus (Status ja Criticality)
- * Ilmoitukset statuksen muutoksesta (bugia seuraaville käyttäjille)
+ * Ilmoitukset statuksen muutoksesta (bugia seuraaville käyttäjille) <img src="http://www.clker.com/cliparts/0/f/7/0/11954234311954389563ok_mark_h_kon_l_vdal_02.svg.med.png" height=10px />
  * Bugin ilmoittaneen käyttäjän yhteystiedot
 
  * Kaikkien kurssilaisten testattavissa ohjelman esittelyn aikana
@@ -26,9 +26,9 @@ http://users.utu.fi/jjholv/taulu1.jpg
   * Subscriptions nappula (Bugin tilaaminen vetämällä Bug listalta nappulan päälle, Drag-and-Drop script)
   * Bug ID Search
 
- * Subscriptions näkymä: Lista käyttäjän Subscriptioneista (filteröity lista bugeja)
+ * Subscriptions näkymä: Lista käyttäjän Subscriptioneista (filteröity lista bugeja) <img src="http://www.clker.com/cliparts/0/f/7/0/11954234311954389563ok_mark_h_kon_l_vdal_02.svg.med.png" height=10px />
 
- * Status Events näkymä: käyttäjän seuraamien bugien statusmuutokset (lista bugeista)
+ * Status Events näkymä: käyttäjän seuraamien bugien statusmuutokset (lista bugeista) <img src="http://www.clker.com/cliparts/0/f/7/0/11954234311954389563ok_mark_h_kon_l_vdal_02.svg.med.png" height=10px />
 
  * Profiili näkymä (pop-up)
   * Edit nappula: tekstit muuttuu kentiksi, joihin tiedot voi muuttaa. Nappuloiden tekstit muutetaan Edit->Save ja Close -> Cancel
