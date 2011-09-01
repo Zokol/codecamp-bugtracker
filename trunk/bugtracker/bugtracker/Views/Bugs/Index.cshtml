@@ -8,10 +8,20 @@
 <script type="text/javascript">
     function ChangeColor(tableRow, highLight) {
         if (highLight) {
-            tableRow.style.backgroundColor = '#9ff';
+            $(tableRow).animate({
+                opacity: 1.0,
+                left: '+=100',
+            }, 100, function () {
+                // Animation complete.
+            });
         }
         else {
-            tableRow.style.backgroundColor = 'white';
+            $(tableRow).animate({
+                opacity: 0.8,
+                left: '-=100',
+            }, 100, function () {
+                // Animation complete.
+            });
         }
     }
 
@@ -50,7 +60,7 @@ foreach (var item in Model) {
 
      int cri = item.Criticality;
      if (cri == 0){
-        <tr bgcolor="#F97"
+        <tr bgcolor="#F97" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
 				@Html.DisplayFor(modelItem => item.Title)
@@ -73,7 +83,7 @@ foreach (var item in Model) {
 		</tr>
     }
     if (cri == 1){
-        <tr bgcolor="#FC9"
+        <tr bgcolor="#FC9" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
 				@Html.DisplayFor(modelItem => item.Title)
@@ -96,7 +106,7 @@ foreach (var item in Model) {
 		</tr>
     }
     if (cri == 2){
-        <tr bgcolor="#FFC"
+        <tr bgcolor="#FFC" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
 				@Html.DisplayFor(modelItem => item.Title)
@@ -119,7 +129,7 @@ foreach (var item in Model) {
 		</tr>
     }
     if (cri == 3){
-        <tr bgcolor="#CFF"
+        <tr bgcolor="#CFF" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
 				@Html.DisplayFor(modelItem => item.Title)
@@ -141,8 +151,8 @@ foreach (var item in Model) {
 			</td>
 		</tr>
     }
-    if (cri == 5){
-        <tr bgcolor="#FFF"
+    if (cri == 4){
+        <tr bgcolor="#FFF" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
 				@Html.DisplayFor(modelItem => item.Title)
