@@ -16,9 +16,45 @@ namespace bugtracker.Controllers
         //
         // GET: /Bugs/
 
-        public ViewResult Index()
+        /*public ViewResult Index()
         {
             return View(db.Bugs.ToList());
+        }*/
+
+        public ActionResult Index(string sortColumn, bool? asc)
+        {
+            asc = asc ?? true;
+            if (string.IsNullOrWhiteSpace(sortColumn))
+                sortColumn = "ID";
+
+            IEnumerable<Bug> q = null;
+
+            if (sortColumn.Equals("ID") && asc.Value)
+                q = db.Bugs.OrderBy(b => b.ID);
+            else if (sortColumn.Equals("ID") && !asc.Value)
+                q = db.Bugs.OrderByDescending(b => b.ID);
+            else if (sortColumn.Equals("Criticality") && asc.Value)
+                q = db.Bugs.OrderBy(b => b.Criticality);
+            else if (sortColumn.Equals("Criticality") && !asc.Value)
+                q = db.Bugs.OrderByDescending(b => b.Criticality);
+            else if (sortColumn.Equals("Priority") && asc.Value)
+                q = db.Bugs.OrderBy(b => b.Priority);
+            else if (sortColumn.Equals("Priority") && !asc.Value)
+                q = db.Bugs.OrderByDescending(b => b.Priority);
+            else if (sortColumn.Equals("Status") && asc.Value)
+                q = db.Bugs.OrderBy(b => b.Status);
+            else if (sortColumn.Equals("Status") && !asc.Value)
+                q = db.Bugs.OrderByDescending(b => b.Status);
+
+            else
+                q = db.Bugs.OrderBy(b => b.ID);
+
+            q.OrderBy(b => b.Criticality);
+
+            ViewBag.sortColumn = sortColumn;
+            ViewBag.asc = asc.Value;
+
+            return View(q.ToList());
         }
 
         //
