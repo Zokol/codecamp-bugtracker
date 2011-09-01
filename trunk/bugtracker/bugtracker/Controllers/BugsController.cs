@@ -34,8 +34,6 @@ namespace bugtracker.Controllers
             else
             {
 
-
-
                 if (sortColumn.Equals("ID") && asc.Value)
                     q = DataController.GetBugDb().Bugs.OrderBy(b => b.ID);
                 else if (sortColumn.Equals("ID") && !asc.Value)

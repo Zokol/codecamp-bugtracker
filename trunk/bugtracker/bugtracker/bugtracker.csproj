@@ -90,9 +90,6 @@
     <Content Include="App_Data\aspnetdb_log.ldf">
       <DependentUpon>ASPNETDB.MDF</DependentUpon>
     </Content>
-    <Content Include="App_Data\Bugs.sdf" />
-    <Content Include="App_Data\Events.sdf" />
-    <Content Include="App_Data\Subscriptions.sdf" />
     <Content Include="bin\bugtracker.dll" />
     <Content Include="bin\bugtracker.pdb" />
     <Content Include="bin\EntityFramework.dll" />
