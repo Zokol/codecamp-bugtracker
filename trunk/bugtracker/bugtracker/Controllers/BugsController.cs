@@ -45,13 +45,13 @@ namespace bugtracker.Controllers
                 else if (sortColumn.Equals("Criticality") && !asc.Value)
                     q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.Criticality);
                 else if (sortColumn.Equals("Priority") && asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.Priority);
+                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.PriorityID);
                 else if (sortColumn.Equals("Priority") && !asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.Priority);
+                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.PriorityID);
                 else if (sortColumn.Equals("Status") && asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.Status);
+                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.StatusID);
                 else if (sortColumn.Equals("Status") && !asc.Value)
-                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.Status);
+                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.StatusID);
 
                 else
                     q = DataController.GetBugDb().Bugs.OrderBy(b => b.ID);
@@ -155,16 +155,16 @@ namespace bugtracker.Controllers
                     comment = "Criticality: " + orig.Criticality + "--->" + bug.Criticality;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 } 
-                if (!orig.Priority.Equals(bug.Priority))
+                if (!orig.PriorityID.Equals(bug.PriorityID))
                 {
                     typeID = 5;
-                    comment = "Priority: " + orig.Priority + "--->" + bug.Priority;
+                    comment = "Priority: " + orig.PriorityID + "--->" + bug.PriorityID;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
-                if (!orig.Status.Equals(bug.Status))
+                if (!orig.StatusID.Equals(bug.StatusID))
                 {
                     typeID = 6;
-                    comment = "Status: " + orig.Status + "--->" + bug.Status;
+                    comment = "Status: " + orig.StatusID + "--->" + bug.StatusID;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.BugTypeID.Equals(bug.BugTypeID))
