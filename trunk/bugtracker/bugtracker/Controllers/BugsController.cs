@@ -46,16 +46,21 @@ namespace bugtracker.Controllers
                 sortBy = 6;
 
             List<Bug> q = DataController.OrderListByColumn(DataController.GetBugDb().Bugs.ToList(), sortBy, asc);
-            
+
             ViewBag.sortColumn = sortColumn;
             ViewBag.asc = asc.Value;
 
             return View(q);
         }
 
+       
+        public ActionResult Filter(string Filter1)
+        {
+            return View(DataController.GetBugDb());
+        }
+
         //
         // GET: /Bugs/Details/5
-
         public ActionResult Details(int id)
         {
             BugEventList bel = new BugEventList

@@ -22,6 +22,9 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
+
 <table>
     <tr>
         <th>
@@ -43,128 +46,31 @@
             @Html.ActionLinkWithColumnOrder("Type", "Index", (string)ViewBag.sortColumn, (bool)ViewBag.asc)
         </th>
         <th></th>
-
     </tr>
-@{
-foreach (var item in Model) {
 
-     int cri = item.Criticality;
-     if (cri == 5){
-        <tr bgcolor="#F97"
-                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criticality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriorityID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BugTypeID)
-            </td>
-        </tr>
-    }
-    if (cri == 4){
-        <tr bgcolor="#FC9"
-                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criticality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriorityID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BugTypeID)
-            </td>
-        </tr>
-    }
-    if (cri == 3){
-        <tr bgcolor="#FFC"
-                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criticality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriorityID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BugTypeID)
-            </td>
-        </tr>
-    }
-    if (cri == 2){
-        <tr bgcolor="#CFF"
-                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criticality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriorityID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BugTypeID)
-            </td>
-        </tr>
-    }
-    if (cri == 1){
-        <tr bgcolor="#FFF"
-                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Criticality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PriorityID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StatusID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BugTypeID)
-            </td>
-        </tr>
-    }
-}
+@foreach (var item in Model) {
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriorityID)
+        </td>
+        <td>
+            @Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
+        </td>
+        <td>
+            @Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
+        </td>
+    </tr>
 }
 
 </table>

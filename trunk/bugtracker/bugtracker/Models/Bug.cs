@@ -27,7 +27,6 @@ namespace bugtracker.Models
 
         [Required]
         [Range(0, 5)]
-        [DataType(DataType.Text)]
         [Display(Name = "Criticality")]
         public int Criticality { get; set; }
 
@@ -36,7 +35,11 @@ namespace bugtracker.Models
         [DataType(DataType.Text)]
         [Display(Name = "Priority")]
         public int PriorityID { get; set; }
+
+        [Display(Name = "Status")]
         public int StatusID { get; set; }
+
+        [Display(Name = "Bug Type")]
         public int BugTypeID { get; set; }
 
     }
