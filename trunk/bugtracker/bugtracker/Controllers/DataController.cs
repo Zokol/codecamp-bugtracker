@@ -106,12 +106,57 @@ namespace bugtracker.Controllers
             return GetBugDb().Bugs;
         }
 
+        public static List<StatusType> getStatusTypes()
+        {
+            return new List<StatusType>
+            {
+            new StatusType { ID = 0, Name = "Reported" },
+            new StatusType { ID = 1, Name = "Confirmed" },
+            new StatusType { ID = 2, Name = "Rejected" },
+            new StatusType { ID = 3, Name = "Prioritized" },
+            new StatusType { ID = 4, Name = "Reserved" },
+            new StatusType { ID = 5, Name = "Fixed" },
+            new StatusType { ID = 6, Name = "Closed - Resolved" },
+            new StatusType { ID = 7, Name = "Closed - Unresolved" }
+            };
+        }
+
         public static List<BugType> getBugTypes()
         {
-            List<BugType> result = new List<BugType>();
-            foreach (BugType t in GetBugDb().BugTypes)
-                result.Add(t);
-            return result;
+            return new List<BugType>
+            {
+            new BugType { ID = 0, Name = "Database" },
+            new BugType { ID = 1, Name = "UI" },
+            new BugType { ID = 2, Name = "Security" },
+            new BugType { ID = 3, Name = "Core" },
+            new BugType { ID = 4, Name = "Other" }
+            };
+        }
+
+        public static List<CriticalityType> getCriticalityTypes()
+        {
+            return new List<CriticalityType>
+            {
+            new CriticalityType { ID = 0, Name = "Critical" },
+            new CriticalityType { ID = 1, Name = "Major" },
+            new CriticalityType { ID = 2, Name = "Moderate" },
+            new CriticalityType { ID = 3, Name = "Minor" },
+            new CriticalityType { ID = 4, Name = "None" }
+            };
+        }
+
+
+        public static List<LogEventType> getLogEventTypes()
+        {
+            return new List<LogEventType>
+            {
+            new LogEventType { ID = 0, Name = "Creation" },
+            new LogEventType { ID = 1, Name = "Status change" },
+            new LogEventType { ID = 2, Name = "Priority change" },
+            new LogEventType { ID = 3, Name = "Criticality change" },
+            new LogEventType { ID = 4, Name = "Added info" },
+            new LogEventType { ID = 5, Name = "End" }
+            };
         }
 
         public static IEnumerable<Bug> getBugsOfPriority(int priority)
@@ -136,18 +181,24 @@ namespace bugtracker.Controllers
                 .Where(b => b.StatusID == status);
         }
 
-        public static List<String> getBugTypeStrings()
-        {
-            List<String> result = new List<string>();
-            foreach (BugType t in GetBugDb().BugTypes)
-                result.Add(t.Name);
-            return result;
-        }
-
         public static String getBugTypeString(int bugtype)
         {
-            return GetBugDb().BugTypes
-                .First(bt => bt.ID == bugtype).Name;
+            return getBugTypes().First(b => b.ID == bugtype).Name;
+        }
+
+        public static String getStatusTypeString(int status)
+        {
+            return getStatusTypes().First(b => b.ID == status).Name;
+        }
+
+        public static String getCriticalityTypeString(int criticality)
+        {
+            return getCriticalityTypes().First(b => b.ID == criticality).Name;
+        }
+
+        public static String getLogEventTypeString(int eventtype)
+        {
+            return getLogEventTypes().First(b => b.ID == eventtype).Name;
         }
 
         public static List<Bug> OrderListByColumn(List<Bug> bugs, int column, bool? ascending)
