@@ -54,12 +54,26 @@ namespace bugtracker.Controllers
                 db.Subscriptions.Add(subscription);
 
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+               return RedirectToAction("Index");  
             }
 
-            return View(subscription);
+           return View(subscription);
         }
-        
+
+        public ActionResult CreateNewSubscription(string Username, int SubscriptionBugID)
+        {
+            Subscription newSub = new Subscription();
+            newSub.Username = Username;
+            newSub.SubscriptionBugID = SubscriptionBugID;
+            newSub.SubsTypeID = 0;
+            db.Subscriptions.Add(newSub);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
+
         //
         // GET: /Subscription/Edit/5
  
