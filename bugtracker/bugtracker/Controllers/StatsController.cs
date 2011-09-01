@@ -13,16 +13,27 @@ namespace bugtracker.Controllers
         //
         // GET: /Stats/
 
-        public ActionResult Index()
+        public ActionResult Index(string username)
         {
-            string username = Membership.GetUser().UserName;
+            if (username==null) username = Membership.GetUser().UserName;
+
             UserStat us = new UserStat { 
                 User = UserProfile.GetProfile(username),
+
                 LogEvents = DataController.GetEventDb().Events
-                .Where(u => u.User == Membership.GetUser().UserName),
+                .Where(u => u.User == username),
+
                 Bugs = DataController.getBugsOfUser(username)
 
             };
+            ViewBag.BugsReported = (int)((us.LogEvents
+                .Where(l => l.EventType==1)).Count());
+
+            ViewBag.BugsChanged = (int)((us.LogEvents
+                .Where(l => l.EventType!=1 & l.EventType!=5)).Count());
+
+            ViewBag.BugsClosed = (int)((us.LogEvents
+                .Where(l => l.EventType == 7)).Count());
 
             return View(us);
         }
