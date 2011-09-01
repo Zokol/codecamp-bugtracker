@@ -15,6 +15,8 @@ namespace bugtracker.Controllers
     {
         private BugDBContext db = DataController.GetBugDb();
 
+        
+
         //
         // GET: /Bugs/
 

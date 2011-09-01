@@ -92,6 +92,13 @@
     <Content Include="bin\bugtracker.pdb" />
     <Content Include="bin\EntityFramework.dll" />
     <Content Include="bin\EntityFramework.xml" />
+    <Content Include="Content\themes\base\images\bug-icon.png" />
+    <Content Include="Content\themes\base\images\bug_logo.png" />
+    <Content Include="Content\themes\base\images\lightbulb.png" />
+    <Content Include="Content\themes\base\images\list-icon.gif" />
+    <Content Include="Content\themes\base\images\list-icon.png" />
+    <Content Include="Content\themes\base\images\stat-icon.png" />
+    <Content Include="Content\themes\base\images\user-icon.png" />
     <Content Include="Global.asax" />
     <Content Include="obj\Debug\bugtracker.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\bugtracker.dll" />
