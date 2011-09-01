@@ -21,7 +21,7 @@
 
     <div class="display-label">Criticality</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Bug.Criticality)
+        @Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(Model.Bug.Criticality))
     </div>
 
     <div class="display-label">Priority</div>
@@ -31,9 +31,14 @@
 
     <div class="display-label">Status</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Bug.StatusID)
+        @Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(Model.Bug.StatusID))
     </div>
 
+    <div class="display-label">Status</div>
+    <div class="display-field">
+        @Html.Label(bugtracker.Controllers.DataController.getBugTypeString(Model.Bug.BugTypeID))
+    </div>
+    
 
 
     <script language="javascript" type="text/javascript">

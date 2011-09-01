@@ -91,13 +91,16 @@ Bugs
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Criticality)
+            @Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PriorityID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.StatusID)
+            @Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
+        </td>
+        <td>
+            @Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
         </td>
     </tr>
 }
@@ -135,7 +138,7 @@ Events
             @Html.DisplayFor(modelItem => item.CreateTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EventType)
+            @Html.Label(bugtracker.Controllers.DataController.getLogEventTypeString(item.EventType))
         </td>
     </tr>
 }

@@ -67,6 +67,7 @@
     <Compile Include="Controllers\BugsController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\EventController.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\UserBugListController.cs" />
     <Compile Include="Controllers\UserListController.cs" />
@@ -83,20 +84,10 @@
     <Compile Include="Models\UserBugsList.cs" />
     <Compile Include="Models\UserList.cs" />
     <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\UserStat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ASPNETDB.MDF" />
-    <Content Include="App_Data\ASPNETDB1.MDF" />
-    <Content Include="App_Data\aspnetdb1_log.LDF">
-      <DependentUpon>ASPNETDB1.MDF</DependentUpon>
-    </Content>
-    <Content Include="App_Data\aspnetdb_log.ldf">
-      <DependentUpon>ASPNETDB.MDF</DependentUpon>
-    </Content>
-    <Content Include="App_Data\Bugs.sdf" />
-    <Content Include="App_Data\Events.sdf" />
-    <Content Include="App_Data\Subscriptions.sdf" />
     <Content Include="bin\bugtracker.dll" />
     <Content Include="bin\bugtracker.pdb" />
     <Content Include="bin\EntityFramework.dll" />
@@ -207,6 +198,7 @@
     <Content Include="Views\Home\Testi.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +210,7 @@
     <None Include="obj\Debug\ResolveAssemblyReference.cache" />
     <Content Include="Views\Subscription\Details.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Stats\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
