@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using bugtracker.Models;
+using System.Linq.Expressions;
+using System.Web.Security;
 
 namespace bugtracker.Controllers
 { 
@@ -18,7 +20,7 @@ namespace bugtracker.Controllers
 
         /*public ViewResult Index()
         {
-            return View(db.Bugs.ToList());
+            return View(DataController.GetBugDb().Bugs.ToList());
         }*/
 
         public ActionResult Index(string sortColumn, bool? asc)
@@ -28,27 +30,32 @@ namespace bugtracker.Controllers
                 sortColumn = "ID";
 
             IEnumerable<Bug> q = null;
-
-            if (sortColumn.Equals("ID") && asc.Value)
-                q = db.Bugs.OrderBy(b => b.ID);
-            else if (sortColumn.Equals("ID") && !asc.Value)
-                q = db.Bugs.OrderByDescending(b => b.ID);
-            else if (sortColumn.Equals("Criticality") && asc.Value)
-                q = db.Bugs.OrderBy(b => b.Criticality);
-            else if (sortColumn.Equals("Criticality") && !asc.Value)
-                q = db.Bugs.OrderByDescending(b => b.Criticality);
-            else if (sortColumn.Equals("Priority") && asc.Value)
-                q = db.Bugs.OrderBy(b => b.Priority);
-            else if (sortColumn.Equals("Priority") && !asc.Value)
-                q = db.Bugs.OrderByDescending(b => b.Priority);
-            else if (sortColumn.Equals("Status") && asc.Value)
-                q = db.Bugs.OrderBy(b => b.Status);
-            else if (sortColumn.Equals("Status") && !asc.Value)
-                q = db.Bugs.OrderByDescending(b => b.Status);
-
+            if (Membership.GetUser() == null) q = new List<Bug>().AsEnumerable<Bug>();
             else
-                q = db.Bugs.OrderBy(b => b.ID);
+            {
 
+
+
+                if (sortColumn.Equals("ID") && asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.ID);
+                else if (sortColumn.Equals("ID") && !asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.ID);
+                else if (sortColumn.Equals("Criticality") && asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.Criticality);
+                else if (sortColumn.Equals("Criticality") && !asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.Criticality);
+                else if (sortColumn.Equals("Priority") && asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.Priority);
+                else if (sortColumn.Equals("Priority") && !asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.Priority);
+                else if (sortColumn.Equals("Status") && asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.Status);
+                else if (sortColumn.Equals("Status") && !asc.Value)
+                    q = DataController.GetBugDb().Bugs.OrderByDescending(b => b.Status);
+
+                else
+                    q = DataController.GetBugDb().Bugs.OrderBy(b => b.ID);
+            }
             ViewBag.sortColumn = sortColumn;
             ViewBag.asc = asc.Value;
 
@@ -66,6 +73,9 @@ namespace bugtracker.Controllers
                 Events = DataController.getEventsOfBug(id)
             };
 
+            Bug bug = DataController.GetBugDb().Bugs.Find(id);
+
+
             if (DataController.isUserSubscribedToBug(id, HttpContext.User.Identity.Name))
             {
                 ViewBag.alreadySubscribed = true;
@@ -75,7 +85,6 @@ namespace bugtracker.Controllers
                 ViewBag.alreadySubscribed = false;
             }
 
-            //Bug bug = db.Bugs.Find(id);
             return PartialView(bel);
         }
 
@@ -95,7 +104,7 @@ namespace bugtracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Bugs.Add(bug);
+                DataController.GetBugDb().Bugs.Add(bug);
                 db.SaveChanges();
                 EventController e = new EventController();
                 e.Create(bug.ID, HttpContext.User.Identity.Name, 1, "Bugi luotu");
@@ -110,7 +119,7 @@ namespace bugtracker.Controllers
  
         public ActionResult Edit(int id)
         {
-            Bug bug = db.Bugs.Find(id);
+            Bug bug = DataController.GetBugDb().Bugs.Find(id);
             return PartialView(bug);
         }
 
@@ -176,7 +185,7 @@ namespace bugtracker.Controllers
  
         public ActionResult Delete(int id)
         {
-            Bug bug = db.Bugs.Find(id);
+            Bug bug = DataController.GetBugDb().Bugs.Find(id);
             return PartialView(bug);
         }
 
@@ -186,8 +195,8 @@ namespace bugtracker.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            Bug bug = db.Bugs.Find(id);
-            db.Bugs.Remove(bug);
+            Bug bug = DataController.GetBugDb().Bugs.Find(id);
+            DataController.GetBugDb().Bugs.Remove(bug);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
