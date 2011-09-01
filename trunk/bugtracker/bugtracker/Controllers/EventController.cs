@@ -18,7 +18,7 @@ namespace bugtracker.Controllers
 
         public ViewResult Index()
         {
-            return View(db.Events.ToList());
+            return View(DataController.getChangedStatusListOfCurrentUserSinceCheck());
         }
 
         //
