@@ -47,8 +47,6 @@
             @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
             <a href="#" onclick="loadPartialView('Bugs/Details/@item.ID', 'detailview')">Details</a>            
         </td>
     </tr>
