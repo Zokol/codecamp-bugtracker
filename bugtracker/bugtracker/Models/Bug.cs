@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.Web.Mvc;
 
 namespace bugtracker.Models
 {
@@ -15,6 +16,8 @@ namespace bugtracker.Models
         public int Priority { get; set; }
         public int Status { get; set; }
         public int BugTypeID { get; set; }
+
+
     }
 
     public class BugDBContext : DbContext
@@ -22,6 +25,8 @@ namespace bugtracker.Models
         public DbSet<Bug> Bugs { get; set; }
         public DbSet<BugType> BugTypes { get; set; }
     }
+
+    
 
     public class BugType
     {

@@ -93,6 +93,7 @@ namespace bugtracker.Controllers
                     profile.FirstName = model.FirstName;
                     profile.LastName = model.LastName;
                     profile.LastSignOff = DateTime.Now;
+                    profile.LastNotificationCheck = DateTime.Now;
                     profile.Save();
 
                     return RedirectToAction("Index", "Home");

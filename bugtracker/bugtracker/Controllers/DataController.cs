@@ -43,11 +43,19 @@ namespace bugtracker.Controllers
                 .Where(s => s.Username == username);
         }
 
-        public static IEnumerable<LogEvent> getRecentChangedStatusListOfCurrentUser()
+        public static IEnumerable<LogEvent> getChangedStatusListOfCurrentUserSinceLogout()
         {
             DateTime lastsignoff = UserProfile.GetProfile(Membership.GetUser().UserName).LastSignOff;
             List<LogEvent> events = GetEventDb().Events
                 .Where(e => (e.CreateTime > lastsignoff & e.EventType == 6)).ToList<LogEvent>();
+            return events;
+        }
+
+        public static IEnumerable<LogEvent> getChangedStatusListOfCurrentUserSinceCheck()
+        {
+            DateTime lastcheck = UserProfile.GetProfile(Membership.GetUser().UserName).LastNotificationCheck;
+            List<LogEvent> events = GetEventDb().Events
+                .Where(e => (e.CreateTime > lastcheck & e.EventType == 6)).ToList<LogEvent>();
             return events;
         }
 
