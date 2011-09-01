@@ -2,13 +2,13 @@
 
 @if (bugtracker.Controllers.DataController.getChangedStatusListOfCurrentUserSinceCheck().Count() == 0){
     <style type="text/css">
-    #menu .notification
+    ul#menu .notification
     {
-        background-color: #F5A9BC;    
+        background-color: #e8eef4;    
     }
-    ul#menu li .notification
+    ul#menu .notification a
     {
-        background-color: #F5A9BC;    
+        background-color: #e8eef4;    
     }
     </style>
 }
@@ -16,13 +16,13 @@
 else
 {
     <style type="text/css">
-    #menu .notification
+    ul#menu .notification
     {
-        background-color: #e8eef4;    
+        background-color: #F5A9BC;    
     }
-    ul#menu li .notification
+    ul#menu .notification a
     {
-        background-color: #e8eef4;    
+        background-color: #F5A9BC;    
     }
     </style>
 }
