@@ -4,6 +4,21 @@
     ViewBag.Title = "Index";
 }
 
+<script type="text/javascript">
+    function ChangeColor(tableRow, highLight) {
+        if (highLight) {
+            tableRow.style.backgroundColor = '#9ff';
+        }
+        else {
+            tableRow.style.backgroundColor = 'white';
+        }
+    }
+
+    function DoNav(theUrl) {
+        document.location.href = theUrl;
+    }
+</script>
+
 <h2>List of bugs</h2>
 
 <p>
@@ -30,7 +45,9 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('Bugs/Details/@item.ID', 'detailview');">
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
@@ -45,9 +62,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            <a href="#" onclick="loadPartialView('Bugs/Details/@item.ID', 'detailview')">Details</a>            
         </td>
     </tr>
 }
