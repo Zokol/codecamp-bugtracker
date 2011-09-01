@@ -10,6 +10,9 @@ namespace bugtracker.Models
     public class UserProfile : ProfileBase
     {
         [Display(Name = "First Name")]
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
         public virtual string FirstName
         {
             get
@@ -23,6 +26,9 @@ namespace bugtracker.Models
         }
 
         [Display(Name = "Last Name")]
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
         public virtual string LastName
         {
             get
