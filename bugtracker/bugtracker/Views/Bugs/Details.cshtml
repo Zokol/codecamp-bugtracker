@@ -35,6 +35,11 @@
         @Html.DisplayFor(model => model.Bug.StatusID)
     </div>
 
+    <div class="display-label">Type</div>
+    <div class="display-field">
+        @Html.Label(bugtracker.Controllers.DataController.getBugTypeString(Model.Bug.BugTypeID))
+    </div>
+
     <br/>
     <hr/>
     <div id="detailviewbuttons">
