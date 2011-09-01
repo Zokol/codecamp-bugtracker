@@ -38,6 +38,22 @@
             @Html.ValidationMessageFor(model => model.Criticality)
         </div>
 
+                <div class="editor-label">
+            @Html.LabelFor(model => model.PriorityID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PriorityID)
+            @Html.ValidationMessageFor(model => model.PriorityID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StatusID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StatusID)
+            @Html.ValidationMessageFor(model => model.StatusID)
+        </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>
