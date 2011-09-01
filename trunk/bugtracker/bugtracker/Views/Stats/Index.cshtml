@@ -19,7 +19,7 @@
     }
 </script>
 
-<h2>Your statistics</h2>
+<h2>Your statistics, @Html.DisplayText("User.Firstname") @Html.DisplayText("User.Lastname")</h2>
 <table>
 <tr>
 <th>Bugs reported</th>
@@ -30,24 +30,35 @@
 </tr>
 <tr>
 <td>
-???
+<div class="editor-label">
+            @ViewBag.BugsReported
+</div>
 </td>
 <td>
-???
+<div class="editor-label">
+            @ViewBag.BugsChanged
+</div>
 </td>
 <td>
-???
+<div class="editor-label">
+            @ViewBag.BugsClosed
+</div>
 </td>
 <td>
-@Html.DisplayFor(modelItem => modelItem.LogEvents.Count())
+<div class="editor-label">
+            @Html.Raw(Model.LogEvents.Count().ToString())
+</div>
 </td>
 <td>
-@Html.DisplayFor(modelItem => modelItem.Bugs.Count())
+<div class="editor-label">
+            @Html.Raw(Model.Bugs.Count().ToString())
+</div>
 </td>
 
 </tr>
 </table>
-
+<br /><br />
+Bugs
 
 <table>
     <tr>
@@ -90,6 +101,25 @@
         </td>
     </tr>
 }
+</table>
+<br /><br />
+Events
+<table>
+    <tr>
+        <th>
+            BugID
+        </th>
+        <th>
+            Comment
+        </th>
+        <th>
+            CreateTime
+        </th>
+        <th>
+            Event type
+        </th>
+
+    </tr>
 
 @foreach (var item in Model.LogEvents) {
     <tr onmouseover="ChangeColor(this, true);" 
