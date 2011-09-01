@@ -36,7 +36,11 @@
             @Html.LabelFor(model => model.Criticality)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Criticality)
+            @Html.DropDownListFor(model => model.Criticality,
+                                    new SelectList(bugtracker.Controllers.DataController.getCriticalityTypes(),
+                                    "ID",
+                                    "Name",
+                                    Model.Criticality))
             @Html.ValidationMessageFor(model => model.Criticality)
         </div>
 
@@ -52,7 +56,11 @@
             @Html.LabelFor(model => model.StatusID)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.StatusID)
+            @Html.DropDownListFor(model => model.StatusID,
+                                    new SelectList(bugtracker.Controllers.DataController.getStatusTypes(),
+                                    "ID",
+                                    "Name",
+                                    Model.StatusID))
             @Html.ValidationMessageFor(model => model.StatusID)
         </div>
 
