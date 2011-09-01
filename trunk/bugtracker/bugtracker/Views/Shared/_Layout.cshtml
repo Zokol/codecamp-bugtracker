@@ -1,7 +1,26 @@
 ﻿<!DOCTYPE html>
+
+@if (bugtracker.Controllers.DataController.getChangedStatusListOfCurrentUserSinceCheck().Count() == 0){
+    <style type="text/css">
+    #menu .notification
+    {
+        background-color: #F5A9BC;    
+    }
+    </style>
+}
+
+else
+{
+    <style type="text/css">
+    #menu .notification
+    {
+        background-color: #e8eef4;    
+    }
+    </style>
+}
+
 <html>
 <head>
-    <title>BugTracker</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/customScripts.js")" type="text/javascript"></script>
@@ -11,13 +30,13 @@
             $('#' + divid).load( loadUrl);
         }
     </script>
-</head>
+</head>                    
 <body>
     <div class="page">
 
         <div id="header">
             <div id="title">
-                <h1>BugTracker</h1>
+                <img src="../../Content/themes/base/images/bug_logo.png" height="90px" alt="BugTracker" />
             </div>
             @if (Request.IsAuthenticated)
             {
@@ -27,9 +46,10 @@
                 </div>
                  <div id="menucontainer">
                     <ul id="menu">
-                        <li>@Html.ActionLink("Bugs", "Index", "Bugs")</li>
-                        <li>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>
-                        <li>@Html.ActionLink("Notifications", "Index", "Event")</li>
+                        <li><img src="../../Content/themes/base/images/bug-icon.png" height="20px"/>@Html.ActionLink("Bugs", "Index", "Bugs")</li>
+                        <li><img src="../../Content/themes/base/images/list-icon.png" height="20px"/>@Html.ActionLink("Subscriptions", "Index", "Subscription")</li>
+                        
+                        <li class="notification"><img src="../../Content/themes/base/images/lightbulb.png" height="20px"/>@Html.ActionLink("Notifications", "Index", "Event")</li>
                     </ul>
                 </div>
             }
