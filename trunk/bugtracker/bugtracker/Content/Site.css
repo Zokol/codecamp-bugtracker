@@ -142,6 +142,20 @@ page width. Or, you can specify an exact pixel width. */
     background-color: #fff;
 }
 
+#detailviewbuttons
+{
+    background-color: #E8EEF4;
+    font-size: 120%;
+    font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
+    font-weight: bold;
+    color: #034AF3;
+}
+
+#detailviewbuttons a
+{
+    text-decoration: none;    
+}
+
 /* TAB MENU   
 ----------------------------------------------------------*/
 ul#menu
