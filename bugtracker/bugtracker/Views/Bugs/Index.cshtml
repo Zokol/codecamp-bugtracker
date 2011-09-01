@@ -1,4 +1,5 @@
-﻿@model IEnumerable<bugtracker.Models.Bug>
+﻿@using bugtracker
+@model IEnumerable<bugtracker.Models.Bug>
 
 @{
     ViewBag.Title = "Index";
@@ -33,13 +34,13 @@
             Description
         </th>
         <th>
-            Criticality
+            @Html.ActionLinkWithColumnOrder("Criticality", "Index", (string)ViewBag.sortColumn, (bool)ViewBag.asc)
         </th>
         <th>
-            Priority
+            @Html.ActionLinkWithColumnOrder("Priority", "Index", (string)ViewBag.sortColumn, (bool)ViewBag.asc)
         </th>
         <th>
-            Status
+            @Html.ActionLinkWithColumnOrder("Status", "Index", (string)ViewBag.sortColumn, (bool)ViewBag.asc)
         </th>
         <th></th>
     </tr>
