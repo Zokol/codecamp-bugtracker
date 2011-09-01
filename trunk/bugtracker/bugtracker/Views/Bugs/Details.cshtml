@@ -34,85 +34,91 @@
         @Html.DisplayFor(model => model.Bug.Status)
     </div>
 
-</fieldset>
 
-<script language="javascript" type="text/javascript">
-<!--
 
-    $(document).ready(function () {
+    <script language="javascript" type="text/javascript">
+    <!--
 
-        //select all the a tag with name equal to modal
-        $('a[name=modal]').click(function (e) {
-            //Cancel the link behavior
-            e.preventDefault();
-            //Get the A tag
-            var id = $(this).attr('href');
+        $(document).ready(function () {
 
-            //Get the screen height and width
-            var maskHeight = $(document).height();
-            var maskWidth = $(window).width();
+            //select all the a tag with name equal to modal
+            $('a[name=modal]').click(function (e) {
+                //Cancel the link behavior
+                e.preventDefault();
+                //Get the A tag
+                var id = $(this).attr('href');
 
-            //Set height and width to mask to fill up the whole screen
-            $('#mask').css({ 'width': maskWidth, 'height': maskHeight });
+                //Get the screen height and width
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
 
-            //transition effect     
-            $('#mask').fadeIn(1000);
-            $('#mask').fadeTo("slow", 0.8);
+                //Set height and width to mask to fill up the whole screen
+                $('#mask').css({ 'width': maskWidth, 'height': maskHeight });
 
-            //Get the window height and width
-            var winH = $(window).height();
-            var winW = $(window).width();
+                //transition effect     
+                $('#mask').fadeIn(1000);
+                $('#mask').fadeTo("slow", 0.8);
 
-            loadPartialView('Bugs/Edit/@Model.Bug.ID', 'dialog');
+                //Get the window height and width
+                var winH = $(window).height();
+                var winW = $(window).width();
 
-            //Set the popup window to center
-            $('#dialog').css('top', '10px');
-            $('#dialog').css('left', winW / 2 - $('#dialog').width() / 2);
+                loadPartialView('Bugs/Edit/@Model.Bug.ID', 'dialog');
+
+                //Set the popup window to center
+                $('#dialog').css('top', '10px');
+                $('#dialog').css('left', winW / 2 - $('#dialog').width() / 2);
             
 
-            //transition effect
-            $('#dialog').fadeIn(2000);
+                //transition effect
+                $('#dialog').fadeIn(2000);
+
+            });
+
+            //if close button is clicked
+            $('.window .close').click(function (e) {
+                //Cancel the link behavior
+                e.preventDefault();
+                $('#mask, .window').hide();
+            });
+
+            // if mask is clicked
+            //$('#mask').click(function () {
+            //    $(this).hide();
+            //    $('.window').hide();
+            //});         
 
         });
+    // -->
+    </script>
 
-        //if close button is clicked
-        $('.window .close').click(function (e) {
-            //Cancel the link behavior
-            e.preventDefault();
-            $('#mask, .window').hide();
-        });
-
-        // if mask is clicked
-        //$('#mask').click(function () {
-        //    $(this).hide();
-        //    $('.window').hide();
-        //});         
-
-    });
-// -->
-</script>
-
-<h2>Tools</h2>
-<!-- #dialog is the id of a DIV defined in the code below -->
-<a href="#dialog" name="modal">Simple Modal Window</a>
- 
-<div id="boxes">
- 
-     
-    <!-- #customize your modal window here -->
- 
-    <div id="dialog" class="window">
-        <b>Testing of Modal Window</b> | 
-         
-        <!-- close button is defined as close class -->
-        <a href="#" class="close">Close it</a>
- 
+    <br>
+    <hr>
+    <div id="detailviewbuttons">
+        <!-- #dialog is the id of a DIV defined in the code below -->
+        <a href="#dialog" name="modal">Edit</a>
+        @*@Html.ActionLink("Delete", "Delete", new { id=model.Bug.ID })*@
     </div>
  
+    <div id="boxes">
+ 
      
-    <!-- Do not remove div#mask, because you'll need it to fill the whole screen --> 
-    <div id="mask"></div>
-</div>
+        <!-- #customize your modal window here -->
+ 
+        <div id="dialog" class="window">
+            <b>Testing of Modal Window</b> | 
+         
+            <!-- close button is defined as close class -->
+            <a href="#" class="close">Close it</a>
+ 
+        </div>
+ 
+     
+        <!-- Do not remove div#mask, because you'll need it to fill the whole screen --> 
+        <div id="mask"></div>
+    </div>
+
+</fieldset>
 
 <h2>Event History</h2>
 
