@@ -54,13 +54,7 @@ namespace bugtracker.Controllers
 
             return View(q);
         }
-
-       
-        public ActionResult Filter(string Filter1)
-        {
-            return View(DataController.GetBugDb());
-        }
-
+        
         //
         // GET: /Bugs/Details/5
         public ActionResult Details(int id)
@@ -180,12 +174,6 @@ namespace bugtracker.Controllers
                 return RedirectToAction("Index");
             }
             return View(bug);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

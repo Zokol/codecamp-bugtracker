@@ -47,7 +47,7 @@ namespace bugtracker.Controllers
         {
             DateTime lastsignoff = UserProfile.GetProfile(Membership.GetUser().UserName).LastSignOff;
             List<LogEvent> events = GetEventDb().Events
-                .Where(e => (e.CreateTime > lastsignoff & e.EventType == 6)).ToList<LogEvent>();
+                .Where(e => (e.CreateTime > lastsignoff & e.EventType == 1)).ToList<LogEvent>();
             return events;
         }
 
@@ -56,7 +56,7 @@ namespace bugtracker.Controllers
             if (Membership.GetUser() == null) return new List<LogEvent>();
             DateTime lastcheck = UserProfile.GetProfile(Membership.GetUser().UserName).LastNotificationCheck;
             List<LogEvent> events = GetEventDb().Events
-                .Where(e => (e.CreateTime > lastcheck & e.EventType == 6)).ToList<LogEvent>();
+                .Where(e => (e.CreateTime > lastcheck & e.EventType == 1)).ToList<LogEvent>();
             return events;
         }
 
