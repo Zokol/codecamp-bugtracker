@@ -61,7 +61,7 @@
             @Html.DropDownListFor(model => model.BugTypeID, 
                                     new SelectList(bugtracker.Controllers.DataController.getBugTypes(), 
                                     "ID", 
-                                    "Name"));
+                                    "Name"))
             @Html.ValidationMessageFor(model => model.BugTypeID)
         </div>
 

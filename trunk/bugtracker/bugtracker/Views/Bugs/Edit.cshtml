@@ -56,6 +56,18 @@
             @Html.ValidationMessageFor(model => model.StatusID)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BugTypeID)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.BugTypeID, 
+                                    new SelectList(bugtracker.Controllers.DataController.getBugTypes(), 
+                                    "ID", 
+                                    "Name",
+                                    Model.BugTypeID));
+            @Html.ValidationMessageFor(model => model.BugTypeID)
+        </div>
+
         <p>
             <input type="submit" value="Save" />
         </p>
