@@ -11,13 +11,16 @@
 </p>
 <table>
     <tr>
-        <th></th>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
     </tr>
 
 @foreach (var item in Model.UserProfiles) {
     <tr>
         <td>
-            @Html.DisplayFor(u => item.UserID)
+            @Html.DisplayFor(u => item.UserName)
         </td>
         <td>
             @Html.DisplayFor(u => item.FirstName)
@@ -26,9 +29,7 @@
             @Html.DisplayFor(u => item.LastName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(u => Membership.GetUser(item.UserName).Email)
         </td>
     </tr>
 }
