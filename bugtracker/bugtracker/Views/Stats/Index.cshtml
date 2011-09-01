@@ -1,0 +1,114 @@
+﻿@model bugtracker.Models.UserStat
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script type="text/javascript">
+    function ChangeColor(tableRow, highLight) {
+        if (highLight) {
+            tableRow.style.backgroundColor = '#9ff';
+        }
+        else {
+            tableRow.style.backgroundColor = 'white';
+        }
+    }
+
+    function DoNav(theUrl) {
+        document.location.href = theUrl;
+    }
+</script>
+
+<h2>Your statistics</h2>
+<table>
+<tr>
+<th>Bugs reported</th>
+<th>Bugs changed</th>
+<th>Bugs closed</th>
+<th>Total events</th>
+<th>Total bugs</th>
+</tr>
+<tr>
+<td>
+???
+</td>
+<td>
+???
+</td>
+<td>
+???
+</td>
+<td>
+@Html.DisplayFor(modelItem => modelItem.LogEvents.Count())
+</td>
+<td>
+@Html.DisplayFor(modelItem => modelItem.Bugs.Count())
+</td>
+
+</tr>
+</table>
+
+
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Criticality
+        </th>
+        <th>
+            Priority
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Bugs) {
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Criticality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriorityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusID)
+        </td>
+    </tr>
+}
+
+@foreach (var item in Model.LogEvents) {
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('/Bugs/Details/@item.BugID', 'detailview');">
+        <td>
+            @Html.DisplayFor(modelItem => item.BugID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventType)
+        </td>
+    </tr>
+}
+
+
+</table>

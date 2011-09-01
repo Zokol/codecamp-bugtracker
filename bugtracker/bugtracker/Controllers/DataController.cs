@@ -26,8 +26,6 @@ namespace bugtracker.Controllers
             return new SubscriptionDBContext();
         }
 
-
-
         public static EventDBContext GetEventDb()
         {
             return new EventDBContext();
@@ -108,6 +106,28 @@ namespace bugtracker.Controllers
             return GetBugDb().Bugs;
         }
 
+        public static IEnumerable<Bug> getBugsOfPriority(int priority)
+        {
+            if (Membership.GetUser() == null) return new List<Bug>();
+            return GetBugDb().Bugs
+                .Where(b => b.PriorityID == priority);
+        }
+
+        public static IEnumerable<Bug> getBugsofCriticality(int criticality)
+        {
+            if (Membership.GetUser() == null) return new List<Bug>();
+            return GetBugDb().Bugs
+                .Where(b => b.Criticality >= criticality);
+
+        }
+
+        public static IEnumerable<Bug> getBugsofStatus(int status)
+        {
+            if (Membership.GetUser() == null) return new List<Bug>();
+            return GetBugDb().Bugs
+                .Where(b => b.StatusID == status);
+        }
+
         public static List<String> getBugTypeStrings()
         {
             List<String> result = new List<string>();
@@ -137,7 +157,6 @@ namespace bugtracker.Controllers
             }
             if (asc) result.Reverse();
             return result;
-
         }
 
         public static IEnumerable<LogEvent> getEventsOfBug(int bugid)
