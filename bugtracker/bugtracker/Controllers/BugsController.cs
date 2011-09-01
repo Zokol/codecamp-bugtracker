@@ -101,6 +101,8 @@ namespace bugtracker.Controllers
                 db.SaveChanges();
                 EventController e = new EventController();
                 e.Create(bug.ID, HttpContext.User.Identity.Name, 1, "Bugi luotu");
+                SubscriptionController s = new SubscriptionController();
+                s.CreateNewSubscription(HttpContext.User.Identity.Name, bug.ID);
                 return RedirectToAction("Index");
             }
 
