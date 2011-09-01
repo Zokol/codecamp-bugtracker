@@ -1,0 +1,103 @@
+﻿@model IEnumerable<bugtracker.Models.UserStat>
+
+@{
+    ViewBag.Title = "Global";
+}
+
+<script type="text/javascript">
+    function ChangeColor(tableRow, highLight) {
+        if (highLight) {
+            tableRow.style.backgroundColor = '#9ff';
+        }
+        else {
+            tableRow.style.backgroundColor = 'white';
+        }
+    }
+
+    function DoNav(theUrl) {
+        document.location.href = theUrl;
+    }
+</script>
+
+<h2>Global statistics</h2>
+
+<table>
+<tr>
+<th>Total amount of users</th>
+<td>@ViewBag.TotalUsers</td>
+</tr>
+
+<tr>
+<th>Total amount of bugs</th>
+<td>@ViewBag.TotalBugs</td>
+</tr>
+
+<tr>
+<th>Total amount of events:</th>
+<td>@ViewBag.TotalEvents</td>
+</tr>
+
+</table>
+<br /><br />
+<table>
+<tr>
+<th>Longest bug lifecycle (time)</th>
+<td>@ViewBag.MaxBugLife</td>
+</tr>
+
+<tr>
+<th>Average bug lifecycle (time)</th>
+<td>@ViewBag.AvgBugLife</td>
+</tr>
+
+<tr>
+<th>Lowest bug lifecycle (time)</th>
+<td>@ViewBag.MinBugLife</td>
+</tr>
+
+</table>
+<br /><br />
+<table>
+
+<tr>
+<th>Oldest non-closed bug age</th>
+<td>@ViewBag.OldestOpenBug</td>
+</tr>
+
+<tr>
+<th>Average bug age</th>
+<td>@ViewBag.AverageOpenBug</td>
+</tr>
+
+<tr>
+<th>Newest bug reported</th>
+<td>@ViewBag.YoungestOpenBug</td>
+</tr>
+
+</table>
+<br /><br />
+
+<table>
+<tr>
+<th>Username</th>
+<th>Total events</th>
+<th>Total bugs</th>
+</tr>
+
+@foreach (var item in Model) {
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('/Stats/Details/?UserName=@item.User.UserName', 'detailview');">
+        <td>
+            @Html.DisplayFor(modelItem => item.User.UserName)
+        </td>
+        <td>
+            @Html.Label(item.Bugs.Count().ToString())
+        </td>
+        <td>
+            @Html.Label(item.LogEvents.Count().ToString())
+        </td>
+    </tr>
+}
+
+</table>
