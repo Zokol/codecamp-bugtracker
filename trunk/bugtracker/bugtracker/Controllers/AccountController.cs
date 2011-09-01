@@ -162,9 +162,9 @@ namespace bugtracker.Controllers
             return PartialView();
         }
 
-        public ActionResult Profile(String n)
+        public ActionResult Profile()
         {
-            return PartialView(UserProfile.GetProfile(n));
+            return PartialView(UserProfile.GetProfile(HttpContext.User.Identity.Name));
         }
 
         #region Status Codes
