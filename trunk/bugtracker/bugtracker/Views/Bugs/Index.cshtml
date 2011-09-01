@@ -49,7 +49,7 @@
 foreach (var item in Model) {
 
      int cri = item.Criticality;
-     if (cri == 1){
+     if (cri == 0){
         <tr bgcolor="#F97"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
@@ -72,7 +72,7 @@ foreach (var item in Model) {
 			</td>
 		</tr>
     }
-    if (cri == 2){
+    if (cri == 1){
         <tr bgcolor="#FC9"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
@@ -95,7 +95,7 @@ foreach (var item in Model) {
 			</td>
 		</tr>
     }
-    if (cri == 3){
+    if (cri == 2){
         <tr bgcolor="#FFC"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
@@ -118,7 +118,7 @@ foreach (var item in Model) {
 			</td>
 		</tr>
     }
-    if (cri == 4){
+    if (cri == 3){
         <tr bgcolor="#CFF"
                   onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
             <td>
