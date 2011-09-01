@@ -106,6 +106,14 @@ namespace bugtracker.Controllers
             return GetBugDb().Bugs;
         }
 
+        public static List<BugType> getBugTypes()
+        {
+            List<BugType> result = new List<BugType>();
+            foreach (BugType t in GetBugDb().BugTypes)
+                result.Add(t);
+            return result;
+        }
+
         public static IEnumerable<Bug> getBugsOfPriority(int priority)
         {
             if (Membership.GetUser() == null) return new List<Bug>();
@@ -154,6 +162,7 @@ namespace bugtracker.Controllers
                 case 3: { result = bugs.OrderBy(b => b.Criticality).ToList<Bug>(); break; }
                 case 4: { result = bugs.OrderBy(b => b.Description).ToList<Bug>(); break; }
                 case 5: { result = bugs.OrderBy(b => b.Title).ToList<Bug>(); break; }
+                case 6: { result = bugs.OrderBy(b => b.BugTypeID).ToList<Bug>(); break; }
             }
             if (asc) result.Reverse();
             return result;

@@ -39,6 +39,9 @@
         <th>
             @Html.ActionLinkWithColumnOrder("Status", "Index", (string)ViewBag.sortColumn, (bool)ViewBag.asc)
         </th>
+        <th>
+            @Html.ActionLinkWithColumnOrder("Type", "Index", (string)ViewBag.sortColumn, (bool)ViewBag.asc)
+        </th>
         <th></th>
     </tr>
 
@@ -60,6 +63,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StatusID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BugTypeID)
         </td>
     </tr>
 }
