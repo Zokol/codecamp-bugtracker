@@ -102,7 +102,7 @@ namespace bugtracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                DataController.GetBugDb().Bugs.Add(bug);
+                db.Bugs.Add(bug);
                 db.SaveChanges();
                 EventController e = new EventController();
                 e.Create(bug.ID, HttpContext.User.Identity.Name, 1, "Bugi luotu");
@@ -193,8 +193,8 @@ namespace bugtracker.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {            
-            Bug bug = DataController.GetBugDb().Bugs.Find(id);
-            DataController.GetBugDb().Bugs.Remove(bug);
+            Bug bug = db.Bugs.Find(id);
+            db.Bugs.Remove(bug);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
