@@ -1,4 +1,4 @@
-﻿@model bugtracker.Models.LogEvent
+﻿@model bugtracker.Models.BugEventList
 
 @{
     ViewBag.Title = "Details";
@@ -7,14 +7,160 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>LogEvent</legend>
+    <legend>Bug #@Html.DisplayFor(model => model.Bug.ID)</legend>
 
-    <div class="display-label">Comment</div>
+    <div class="display-label">Title</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Comment)
+        @Html.DisplayFor(model => model.Bug.Title)
     </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Bug.Description)
+    </div>
+
+    <div class="display-label">Criticality</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Bug.Criticality)
+    </div>
+
+    <div class="display-label">Priority</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Bug.Priority)
+    </div>
+
+    <div class="display-label">Status</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Bug.Status)
+    </div>
+
+
+
+    <script language="javascript" type="text/javascript">
+    <!--
+
+        $(document).ready(function () {
+
+            //select all the a tag with name equal to modal
+            $('a[name=modal]').click(function (e) {
+                //Cancel the link behavior
+                e.preventDefault();
+                //Get the A tag
+                var id = $(this).attr('href');
+
+                //Get the screen height and width
+                var maskHeight = $(document).height();
+                var maskWidth = $(window).width();
+
+                //Set height and width to mask to fill up the whole screen
+                $('#mask').css({ 'width': maskWidth, 'height': maskHeight });
+
+                //transition effect     
+                $('#mask').fadeIn(1000);
+                $('#mask').fadeTo("slow", 0.8);
+
+                //Get the window height and width
+                var winH = $(window).height();
+                var winW = $(window).width();
+
+                loadPartialView('Bugs/Edit/@Model.Bug.ID', 'dialog');
+
+                //Set the popup window to center
+                $('#dialog').css('top', '10px');
+                $('#dialog').css('left', winW / 2 - $('#dialog').width() / 2);
+
+
+                //transition effect
+                $('#dialog').fadeIn(2000);
+
+            });
+
+            //if close button is clicked
+            $('.window .close').click(function (e) {
+                //Cancel the link behavior
+                e.preventDefault();
+                $('#mask, .window').hide();
+            });
+
+            // if mask is clicked
+            //$('#mask').click(function () {
+            //    $(this).hide();
+            //    $('.window').hide();
+            //});         
+
+        });
+    // -->
+    </script>
+
+    <br/>
+    <hr/>
+    <div id="detailviewbuttons">
+        <!-- #dialog is the id of a DIV defined in the code below -->
+        <a href="#dialog" onclick="showModalPopup('Bugs/Edit/@Model.Bug.ID')">Edit</a>
+        |
+        <a href="#dialog" name="modal">Delete</a>
+    </div>
+ 
+    <div id="boxes">
+ 
+     
+        <!-- #customize your modal window here -->
+ 
+        <div id="dialog" class="window">
+            <b>Testing of Modal Window</b> | 
+         
+            <!-- close button is defined as close class -->
+            <a href="#" class="close">Close it</a>
+ 
+        </div>
+ 
+     
+        <!-- Do not remove div#mask, because you'll need it to fill the whole screen --> 
+        <div id="mask"></div>
+    </div>
+
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<h2>Event History</h2>
+
+<fieldset>
+<table>
+    <tr>
+        <th>
+            Create Time
+        </th>
+        <th>
+            BugID
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Comment
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Events)
+{
+    if (Model.Bug.ID == item.BugID)
+    {        
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BugID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+    </tr>
+    }
+}
+
+</table>
+</fieldset>

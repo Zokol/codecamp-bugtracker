@@ -1,4 +1,4 @@
-﻿@model IEnumerable<bugtracker.Models.LogEvent>
+﻿@model IEnumerable<bugtracker.Models.Bug>
 
 @{
     ViewBag.Title = "Index";
@@ -19,35 +19,51 @@
     }
 </script>
 
-<h2>Changes of interest</h2>
+<h2>List of bugs</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table>
     <tr>
-        <td>User who changed</td>
-        <td>When changed</td>
-        <td>Comment / What changed</td>
-        <td>Bug ID#</td>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Criticality
+        </th>
+        <th>
+            Priority
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
     </tr>
-
 
 @foreach (var item in Model) {
     <tr onmouseover="ChangeColor(this, true);" 
               onmouseout="ChangeColor(this, false);" 
-              onclick="loadPartialView('Bugs/Details/@item.BugID', 'detailview');">
+              onclick="loadPartialView('Bugs/Details/@item.ID', 'detailview');">
         <td>
-            @Html.DisplayFor(modelItem => item.User)
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreateTime)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Comment)
+            @Html.DisplayFor(modelItem => item.Criticality)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BugID)
+            @Html.DisplayFor(modelItem => item.Priority)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
         </td>
     </tr>
 }
-
 
 </table>
