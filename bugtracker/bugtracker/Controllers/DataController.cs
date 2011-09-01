@@ -105,7 +105,7 @@ namespace bugtracker.Controllers
         public static IEnumerable<Bug> getAllBugs()
         {
             if (Membership.GetUser() == null) return new List<Bug>();
-            return bugdb.Bugs;
+            return GetBugDb().Bugs;
         }
 
         public static IEnumerable<LogEvent> getEventsOfBug(int bugid)
