@@ -49,18 +49,19 @@ namespace bugtracker.Controllers
             List<LogEvent> events = GetEventDb().Events
                 .Where(e => (e.CreateTime > lastsignoff & e.EventType == 6)).ToList<LogEvent>();
             return events;
+        }
 
-            /* To get the IEnumerable<Bug> of those bugs whose status has changed:
-             * public static IEnumerable<Bug> getRecentChangedBugListOfCurrentUser()
-             * {
-             * like it is now except;
-             * return from e in events
-                   join b in getAllBugs()
-                   on e.BugID equals b.ID
-                   select b; 
-             *}
-           */
+        public static IEnumerable<Bug> getSubscribedBugsOfCurrentUser()
+        {
+            List<Subscription> subs = GetSubscriptionDb().Subscriptions
+                .Where(sub => sub.Username == Membership.GetUser().UserName).ToList<Subscription>();
+            List<Bug> result = new List<Bug>();
+            foreach (Subscription s in subs)
+            {
+                result.Add(getBugByID(s.SubscriptionBugID));
+            }
 
+            return result;
         }
 
         public static IEnumerable<Bug> getBugsOfUser(string username)
