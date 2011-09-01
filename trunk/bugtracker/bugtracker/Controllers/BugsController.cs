@@ -49,8 +49,6 @@ namespace bugtracker.Controllers
             else
                 q = db.Bugs.OrderBy(b => b.ID);
 
-            q.OrderBy(b => b.Criticality);
-
             ViewBag.sortColumn = sortColumn;
             ViewBag.asc = asc.Value;
 
