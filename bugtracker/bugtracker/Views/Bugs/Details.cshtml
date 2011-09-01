@@ -71,10 +71,10 @@
             Create Time
         </th>
         <th>
-            BugID
+            User
         </th>
         <th>
-            User
+            Event Type
         </th>
         <th>
             Comment
@@ -91,10 +91,10 @@
             @Html.DisplayFor(modelItem => item.CreateTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BugID)
+            @Html.DisplayFor(modelItem => item.User)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.User)
+            @Html.Label(bugtracker.Controllers.DataController.getLogEventTypeString(item.EventType))
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Comment)
