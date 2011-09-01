@@ -22,9 +22,8 @@ namespace bugtracker.Controllers
         }
 
        
-        public ActionResult Details(int Sid)
+        public ActionResult Details(int id)
         {
-            int id = DataController.getBugBySubID(Sid);
             BugEventList bel = new BugEventList
             {
                 Bug = DataController.getBugByID(id),
