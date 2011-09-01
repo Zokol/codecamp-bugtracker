@@ -62,7 +62,7 @@ namespace bugtracker.Controllers
             FormsAuthentication.SignOut();
             
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("LogOn", "Account");
         }
 
         //
@@ -159,7 +159,7 @@ namespace bugtracker.Controllers
 
         public ActionResult ChangePasswordSuccess()
         {
-            return PartialView();
+            return new EmptyResult();
         }
 
         public ActionResult Profile()
