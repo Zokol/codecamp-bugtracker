@@ -41,10 +41,18 @@
         <!-- #dialog is the id of a DIV defined in the code below -->
         <a href="#dialog" onclick="showModalPopup('Bugs/Edit/@Model.Bug.ID')">Edit</a>
         | 
-        @Html.ActionLink("Subscribe", "CreateNewSubscription", "Subscription", new { UserName = HttpContext.Current.User.Identity.Name, SubscriptionBugID = Model.Bug.ID }, null)
+        @{
+          if ( ViewBag.alreadySubscribed == true ) {  
+           @Html.ActionLink("UnSubscribe", "DeleteSubscription", "Subscription", 
+               new { UserName = HttpContext.Current.User.Identity.Name, SubscriptionBugID = Model.Bug.ID }, null); 
+          }
+          else {
+              @Html.ActionLink("Subscribe", "CreateNewSubscription", "Subscription", 
+               new { UserName = HttpContext.Current.User.Identity.Name, SubscriptionBugID = Model.Bug.ID }, null);
+          }
+        }     
         |
         <a href="#dialog" onclick="showModalPopup('Bugs/Delete/@Model.Bug.ID')">Delete</a>
-        <div id="subs">
     </div>
 
 </fieldset>

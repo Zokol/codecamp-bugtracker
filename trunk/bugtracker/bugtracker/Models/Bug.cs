@@ -26,8 +26,6 @@ namespace bugtracker.Models
         public DbSet<BugType> BugTypes { get; set; }
     }
 
-    
-
     public class BugType
     {
         public int ID { get; set; }

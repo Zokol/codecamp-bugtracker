@@ -29,6 +29,12 @@ namespace bugtracker.Controllers
                 Events = events
             };
 
+            if ( DataController.isUserSubscribedToBug(id, HttpContext.User.Identity.Name)) {
+                ViewBag.alreadySubscribed = true;
+            }
+            else {
+                ViewBag.alreadySubscribed = false;
+            }
             return View(bel);
         }
 

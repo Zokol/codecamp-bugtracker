@@ -9,7 +9,7 @@ using bugtracker.Models;
 using System.Web.Security;
 
 namespace bugtracker.Controllers
-{ 
+{
     public class SubscriptionController : Controller
     {
         private SubscriptionDBContext db = DataController.GetSubscriptionDb();
@@ -22,7 +22,7 @@ namespace bugtracker.Controllers
             return View(DataController.getSubscribedBugsOfCurrentUser());
         }
 
-       
+
         public ActionResult Details(int id)
         {
             BugEventList bel = new BugEventList
@@ -39,7 +39,7 @@ namespace bugtracker.Controllers
         public ActionResult Create()
         {
             return View();
-        } 
+        }
 
         //
         // POST: /Subscription/Create
@@ -50,24 +50,50 @@ namespace bugtracker.Controllers
             if (ModelState.IsValid)
             {
                 subscription.Username = HttpContext.User.Identity.Name;
-                
+
                 db.Subscriptions.Add(subscription);
 
                 db.SaveChanges();
-               return RedirectToAction("Index");  
+                return RedirectToAction("Index");
             }
 
-           return View(subscription);
+            return View(subscription);
         }
 
         public ActionResult CreateNewSubscription(string Username, int SubscriptionBugID)
         {
-            Subscription newSub = new Subscription();
-            newSub.Username = Username;
-            newSub.SubscriptionBugID = SubscriptionBugID;
-            newSub.SubsTypeID = 0;
-            db.Subscriptions.Add(newSub);
-            db.SaveChanges();
+            if (DataController.isUserSubscribedToBug(SubscriptionBugID, Username))
+            {
+                return RedirectToAction("Index");
+            }
+
+            else
+            {
+                Subscription newSub = new Subscription();
+                newSub.Username = Username;
+                newSub.SubscriptionBugID = SubscriptionBugID;
+                newSub.SubsTypeID = 0;
+
+                db.Subscriptions.Add(newSub);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+        }
+
+        public ActionResult DeleteSubscription(string Username, int SubscriptionBugID)
+        {
+
+            foreach (Subscription sub in DataController.getSubscriptionsOfUser(HttpContext.User.Identity.Name))
+            {
+                if (sub.SubscriptionBugID == SubscriptionBugID)
+                {
+                    Subscription s = db.Subscriptions.Find(sub.SubscriptionID);
+                    db.Subscriptions.Remove(s);
+                }
+                db.SaveChanges();
+            }
 
             return RedirectToAction("Index");
 
@@ -76,7 +102,7 @@ namespace bugtracker.Controllers
 
         //
         // GET: /Subscription/Edit/5
- 
+
         public ActionResult Edit(int id)
         {
             Subscription subscription = db.Subscriptions.Find(id);
@@ -100,7 +126,7 @@ namespace bugtracker.Controllers
 
         //
         // GET: /Subscription/Delete/5
- 
+
         public ActionResult Delete(int id)
         {
             Subscription subscription = db.Subscriptions.Find(id);
@@ -112,13 +138,13 @@ namespace bugtracker.Controllers
 
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
-        {            
+        {
             Subscription subscription = db.Subscriptions.Find(id);
             db.Subscriptions.Remove(subscription);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-		
+
         protected override void Dispose(bool disposing)
         {
             db.Dispose();

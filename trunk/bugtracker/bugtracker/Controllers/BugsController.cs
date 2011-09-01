@@ -65,6 +65,16 @@ namespace bugtracker.Controllers
                 Bug = DataController.getBugByID(id),
                 Events = DataController.getEventsOfBug(id)
             };
+
+            if (DataController.isUserSubscribedToBug(id, HttpContext.User.Identity.Name))
+            {
+                ViewBag.alreadySubscribed = true;
+            }
+            else
+            {
+                ViewBag.alreadySubscribed = false;
+            }
+
             //Bug bug = db.Bugs.Find(id);
             return PartialView(bel);
         }

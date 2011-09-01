@@ -123,5 +123,17 @@ namespace bugtracker.Controllers
         public static int getBugBySubID(int Sid) {
             return subsdb.Subscriptions.First(a => a.SubscriptionID == Sid).SubscriptionBugID;
         }
+
+        public static bool isUserSubscribedToBug(int bugId, string username)
+        {
+            foreach (Subscription sub in DataController.getSubscriptionsOfUser(username))
+            {
+                if (sub.SubscriptionBugID == bugId)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
