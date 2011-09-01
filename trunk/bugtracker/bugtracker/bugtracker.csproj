@@ -86,10 +86,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ASPNETDB44355423452.MDF" />
-    <Content Include="App_Data\ASPNETDB44355423452_log.ldf">
-      <DependentUpon>ASPNETDB44355423452.MDF</DependentUpon>
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\ASPNETDB1.MDF" />
+    <Content Include="App_Data\aspnetdb1_log.LDF">
+      <DependentUpon>ASPNETDB1.MDF</DependentUpon>
     </Content>
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Bugs.sdf" />
+    <Content Include="App_Data\Events.sdf" />
+    <Content Include="App_Data\Subscriptions.sdf" />
     <Content Include="bin\bugtracker.dll" />
     <Content Include="bin\bugtracker.pdb" />
     <Content Include="bin\EntityFramework.dll" />

@@ -164,7 +164,7 @@ namespace bugtracker.Controllers
                 case 5: { result = bugs.OrderBy(b => b.Title).ToList<Bug>(); break; }
                 case 6: { result = bugs.OrderBy(b => b.BugTypeID).ToList<Bug>(); break; }
             }
-            if (asc) result.Reverse();
+            if (!asc) result.Reverse();
             return result;
         }
 
