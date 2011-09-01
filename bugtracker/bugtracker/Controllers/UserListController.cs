@@ -7,12 +7,23 @@ using bugtracker.Models;
 using System.Web.Security;
 using System.Web.ApplicationServices;
 
-namespace MvcApplication2.Controllers
+namespace bugtracker.Controllers
 {
     public class UserListController : Controller
     {
         //
         // GET: /UserList/
+
+        public static List<UserProfile> GetUserProfiles()
+        {
+            List<UserProfile> UserProfiles = new List<UserProfile>();
+            foreach (MembershipUser mu in Membership.GetAllUsers())
+            {
+                UserProfiles.Add(UserProfile.GetProfile(mu.UserName));
+            }
+            return UserProfiles;
+            
+        }
 
         public ActionResult Index()
         {

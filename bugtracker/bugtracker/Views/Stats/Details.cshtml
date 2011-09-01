@@ -1,0 +1,142 @@
+﻿@model bugtracker.Models.UserStat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<script type="text/javascript">
+    function ChangeColor(tableRow, highLight) {
+        if (highLight) {
+            tableRow.style.backgroundColor = '#9ff';
+        }
+        else {
+            tableRow.style.backgroundColor = 'white';
+        }
+    }
+
+    function DoNav(theUrl) {
+        document.location.href = theUrl;
+    }
+</script>
+
+<h2>Statistics of @Html.DisplayText("User.Username") - @Html.DisplayText("User.Firstname") @Html.DisplayText("User.Lastname")</h2>
+<table>
+<tr>
+<th>Bugs reported</th>
+<th>Bugs changed</th>
+<th>Bugs closed</th>
+<th>Total events</th>
+<th>Total bugs</th>
+</tr>
+<tr>
+<td>
+<div class="editor-label">
+            @ViewBag.BugsReported
+</div>
+</td>
+<td>
+<div class="editor-label">
+            @ViewBag.BugsChanged
+</div>
+</td>
+<td>
+<div class="editor-label">
+            @ViewBag.BugsClosed
+</div>
+</td>
+<td>
+<div class="editor-label">
+            @Html.Raw(Model.LogEvents.Count().ToString())
+</div>
+</td>
+<td>
+<div class="editor-label">
+            @Html.Raw(Model.Bugs.Count().ToString())
+</div>
+</td>
+
+</tr>
+</table>
+<br /><br />
+Bugs
+
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Criticality
+        </th>
+        <th>
+            Priority
+        </th>
+        <th>
+            Status
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Bugs) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Criticality)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriorityID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusID)
+        </td>
+    </tr>
+}
+</table>
+<br /><br />
+Events
+<table>
+    <tr>
+        <th>
+            BugID
+        </th>
+        <th>
+            Comment
+        </th>
+        <th>
+            CreateTime
+        </th>
+        <th>
+            Event type
+        </th>
+
+    </tr>
+
+@foreach (var item in Model.LogEvents) {
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('/Bugs/Details/@item.BugID', 'detailview');">
+        <td>
+            @Html.DisplayFor(modelItem => item.BugID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EventType)
+        </td>
+    </tr>
+}
+
+
+</table>

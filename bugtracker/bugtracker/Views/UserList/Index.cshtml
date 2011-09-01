@@ -18,7 +18,9 @@
     </tr>
 
 @foreach (var item in Model.UserProfiles) {
-    <tr>
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('/Stats/Index/@item.UserName', 'detailview');">
         <td>
             @Html.DisplayFor(u => item.UserName)
         </td>
