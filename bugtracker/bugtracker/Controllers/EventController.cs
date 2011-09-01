@@ -18,7 +18,7 @@ namespace bugtracker.Controllers
 
         public ViewResult Index()
         {
-            return View(DataController.getChangedStatusListOfCurrentUserSinceCheck());
+            return View(DataController.getChangedStatusListOfCurrentUserSinceLogout());
         }
 
         //
