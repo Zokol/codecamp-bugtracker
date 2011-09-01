@@ -133,7 +133,7 @@ namespace bugtracker.Controllers
         public ActionResult Delete(int id)
         {
             Bug bug = db.Bugs.Find(id);
-            return View(bug);
+            return PartialView(bug);
         }
 
         //
