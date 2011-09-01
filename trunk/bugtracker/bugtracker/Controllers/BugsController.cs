@@ -84,7 +84,6 @@ namespace bugtracker.Controllers
 
         public ActionResult Create()
         {
-            ViewData["BugTypes"] = (IEnumerable<BugType>)DataController.getBugTypes();
             return View();
         } 
 
@@ -96,11 +95,10 @@ namespace bugtracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                //bug.BugTypeID = ViewData["BType"];
                 db.Bugs.Add(bug);
                 db.SaveChanges();
                 EventController e = new EventController();
-                e.Create(bug.ID, HttpContext.User.Identity.Name, 1, "Bugi luotu");
+                e.Create(bug.ID, HttpContext.User.Identity.Name, 0, "Bug created");
                 SubscriptionController s = new SubscriptionController();
                 s.CreateNewSubscription(HttpContext.User.Identity.Name, bug.ID);
                 return RedirectToAction("Index");
@@ -134,38 +132,40 @@ namespace bugtracker.Controllers
                 EventController e = new EventController();
                 if (!orig.Title.Equals(bug.Title))
                 {
-                    typeID = 1;
-                    comment = "Title: "+orig.Title + "--->" + bug.Title;
+                    typeID = 4;
+                    comment = "Title: "+orig.Title + " ---> " + bug.Title;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.Description.Equals(bug.Description))
                 {
-                    typeID = 2;
-                    comment = "Description: " + orig.Description + "--->" + bug.Description;
+                    typeID = 4;
+                    comment = "Description: " + orig.Description + " ---> " + bug.Description;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.Criticality.Equals(bug.Criticality))
                 {
-                    typeID = 4;
-                    comment = "Criticality: " + orig.Criticality + "--->" + bug.Criticality;
+                    typeID = 3;
+                    comment = "Criticality: " + DataController.getCriticalityTypeString(orig.Criticality) + " ---> " + DataController.getCriticalityTypeString(bug.Criticality);
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 } 
                 if (!orig.PriorityID.Equals(bug.PriorityID))
                 {
-                    typeID = 5;
-                    comment = "Priority: " + orig.PriorityID + "--->" + bug.PriorityID;
+                    typeID = 2;
+                    comment = "Priority: " + orig.PriorityID + " ---> " + bug.PriorityID;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.StatusID.Equals(bug.StatusID))
                 {
-                    typeID = 6;
-                    comment = "Status: " + orig.StatusID + "--->" + bug.StatusID;
+                    typeID = 1;
+                    comment = "Status: " + DataController.getStatusTypeString(orig.StatusID) + " ---> " + DataController.getStatusTypeString(bug.StatusID);
+                    if (bug.StatusID == (6 | 7))
+                        typeID = 5;
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 }
                 if (!orig.BugTypeID.Equals(bug.BugTypeID))
                 {
-                    typeID = 7;
-                    comment = "Type: " + orig.BugTypeID + "--->" + bug.BugTypeID;
+                    typeID = 4;
+                    comment = "Type: " + DataController.getBugTypeString(orig.BugTypeID) + " ---> " + DataController.getBugTypeString(bug.BugTypeID);
                     e.Create(bug.ID, HttpContext.User.Identity.Name, typeID, comment);
                 } 
                 db.Entry(bug).State = EntityState.Modified;

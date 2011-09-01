@@ -37,7 +37,8 @@
             @Html.DropDownListFor(model => model.Criticality,
                                     new SelectList(bugtracker.Controllers.DataController.getCriticalityTypes(),
                                     "ID",
-                                    "Name"))
+                                    "Name",
+                                    4))
             @Html.ValidationMessageFor(model => model.Criticality)
         </div>
 
@@ -69,7 +70,8 @@
             @Html.DropDownListFor(model => model.BugTypeID,
                                     new SelectList(bugtracker.Controllers.DataController.getBugTypes(),
                                     "ID",
-                                    "Name"))
+                                    "Name",
+                                    4))
             @Html.ValidationMessageFor(model => model.BugTypeID)
         </div>
 
