@@ -98,5 +98,14 @@ namespace bugtracker.Controllers
                 .Where(e => e.BugID == bugid);
         }
 
+        public static IEnumerable<Subscription> getSubByID(int id) 
+        {
+            return subsdb.Subscriptions
+                .Where(s => s.SubscriptionID == id);
+        }
+
+        public static int getBugBySubID(int Sid) {
+            return subsdb.Subscriptions.First(a => a.SubscriptionID == Sid).SubscriptionBugID;
+        }
     }
 }
