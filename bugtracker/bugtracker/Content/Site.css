@@ -5,18 +5,17 @@ to use a different color start by replacing all instances of
 ----------------------------------------------------------*/
 body
 {
-    background-color: #5c87b2;
+    background-color: #444;
     font-size: 75%;
     font-family: Verdana, Tahoma, Arial, "Helvetica Neue", Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
-    color: #696969;
+    color: #666;
 }
 
 a:link
 {
-    color: #034af3;
-    text-decoration: underline;
+    color: #369;
 }
 a:visited
 {
@@ -140,6 +139,7 @@ page width. Or, you can specify an exact pixel width. */
     overflow: auto;
     margin: 0 10px 0 0;
     background-color: #fff;
+    width: 400px;
 }
 
 #detailviewbuttons
@@ -167,11 +167,11 @@ ul#menu
     text-align: right;
 }
 
-ul#menu li
+/*ul#menu li
 {
     display: inline;
     list-style: none;
-}
+}*/
 
 ul#menu li#greeting
 {
@@ -189,7 +189,7 @@ ul#menu li a
     text-decoration: none;
     line-height: 2.8em;
     background-color: #e8eef4;
-    color: #034af3;
+    color: #369;
 }
 
 ul#menu li a:hover
@@ -208,6 +208,23 @@ ul#menu li.selected a
 {
     background-color: #fff;
     color: #000;
+}
+
+ul#menu li
+{
+    display: inline;
+    list-style: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 2.8em;
+    background-color: #e8eef4;
+    color: #369;
+}
+
+ul#menu li img
+{
+    vertical-align: middle;    
 }
 
 
@@ -257,6 +274,7 @@ table td
 {
   padding: 5px;   
   border: solid 1px #e8eef4;
+  max-width: 342px;
 }
 
 table th
@@ -264,7 +282,12 @@ table th
   padding: 6px 5px;
   text-align: left;
   background-color: #e8eef4; 
-  border: solid 1px #e8eef4;   
+  border: solid 1px #e8eef4; 
+}
+
+table a
+{
+  text-decoration: none;     
 }
 
 /* MISC  
