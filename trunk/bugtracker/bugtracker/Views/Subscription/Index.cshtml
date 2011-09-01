@@ -7,16 +7,23 @@
 <script type="text/javascript">
     function ChangeColor(tableRow, highLight) {
         if (highLight) {
-            tableRow.style.backgroundColor = '#9ff';
+            $(tableRow).animate({
+                opacity: 1.0,
+                left: '+=100',
+            }, 100, function () {
+                // Animation complete.
+            });
         }
         else {
-            tableRow.style.backgroundColor = 'white';
+            $(tableRow).animate({
+                opacity: 0.8,
+                left: '-=100',
+            }, 100, function () {
+                // Animation complete.
+            });
         }
     }
 
-    function DoNav(theUrl) {
-        document.location.href = theUrl;
-    }
 </script>
 
 <h2>Your subscriptions</h2>
@@ -44,29 +51,127 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr onmouseover="ChangeColor(this, true);" 
-              onmouseout="ChangeColor(this, false);" 
-              onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PriorityID)
-        </td>
-        <td>
-            @Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
-        </td>
-        <td>
-            @Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
-        </td>
-    </tr>
+@{
+foreach (var item in Model) {
+
+     int cri = item.Criticality;
+     if (cri == 0){
+        <tr bgcolor="#F97" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
+                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
+            <td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PriorityID)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
+			</td>
+		</tr>
+    }
+    if (cri == 1){
+        <tr bgcolor="#FC9" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
+                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
+            <td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PriorityID)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
+			</td>
+		</tr>
+    }
+    if (cri == 2){
+        <tr bgcolor="#FFC" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
+                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
+            <td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PriorityID)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
+			</td>
+		</tr>
+    }
+    if (cri == 3){
+        <tr bgcolor="#CFF" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
+                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
+            <td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PriorityID)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
+			</td>
+		</tr>
+    }
+    if (cri == 4){
+        <tr bgcolor="#FFF" style="opacity: 0.8;" onmouseout="ChangeColor(this, false)" onmouseover="ChangeColor(this, true)"
+                  onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
+            <td>
+				@Html.DisplayFor(modelItem => item.Title)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getCriticalityTypeString(item.Criticality))
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.PriorityID)
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getStatusTypeString(item.StatusID))
+			</td>
+			<td>
+				@Html.Label(bugtracker.Controllers.DataController.getBugTypeString(item.BugTypeID))
+			</td>
+		</tr>
+    }
 }
+}
+
 
 </table>
