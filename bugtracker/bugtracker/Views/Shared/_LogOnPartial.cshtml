@@ -1,6 +1,6 @@
 ﻿@if(Request.IsAuthenticated) {
-    <text>Welcome <b>@Context.User.Identity.Name</b>!
-    [ @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
+    <text><b>@Context.User.Identity.Name</b>
+    [<a href="#dialog" onclick="showModalPopup('Account/Profile/@Context.User.Identity.Name')">Profile</a>, @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
 }
 else {
     @:[ @Html.ActionLink("Log On", "LogOn", "Account") ]
