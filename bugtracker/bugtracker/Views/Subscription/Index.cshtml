@@ -4,6 +4,21 @@
     ViewBag.Title = "Index";
 }
 
+<script type="text/javascript">
+    function ChangeColor(tableRow, highLight) {
+        if (highLight) {
+            tableRow.style.backgroundColor = '#9ff';
+        }
+        else {
+            tableRow.style.backgroundColor = 'white';
+        }
+    }
+
+    function DoNav(theUrl) {
+        document.location.href = theUrl;
+    }
+</script>
+
 <h2>Changes of interest</h2>
 
 <table>
@@ -16,7 +31,9 @@
 
 
 @foreach (var item in Model) {
-    <tr>
+    <tr onmouseover="ChangeColor(this, true);" 
+              onmouseout="ChangeColor(this, false);" 
+              onclick="loadPartialView('Bugs/Details/@item.BugID', 'detailview');">
         <td>
             @Html.DisplayFor(modelItem => item.User)
         </td>
@@ -27,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.Comment)
         </td>
         <td>
-            <a href="#" onclick="loadPartialView('Subscription/Details/@item.BugID', 'detailview')">@Html.DisplayFor(modelItem => item.BugID)</a>
+            @Html.DisplayFor(modelItem => item.BugID)
         </td>
     </tr>
 }
