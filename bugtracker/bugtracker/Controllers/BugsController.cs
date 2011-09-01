@@ -180,27 +180,6 @@ namespace bugtracker.Controllers
             return View(bug);
         }
 
-        //
-        // GET: /Bugs/Delete/5
- 
-        public ActionResult Delete(int id)
-        {
-            Bug bug = DataController.GetBugDb().Bugs.Find(id);
-            return PartialView(bug);
-        }
-
-        //
-        // POST: /Bugs/Delete/5
-
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
-        {            
-            Bug bug = db.Bugs.Find(id);
-            db.Bugs.Remove(bug);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             db.Dispose();
