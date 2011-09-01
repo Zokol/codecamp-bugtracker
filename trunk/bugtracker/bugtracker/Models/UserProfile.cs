@@ -47,6 +47,20 @@ namespace bugtracker.Models
                 this.SetPropertyValue("LastSignOff", value);
             }
         }
+
+        [Display(Name = "LastNotificationCheck")]
+        public virtual DateTime LastNotificationCheck
+        {
+            get
+            {
+                return ((DateTime)this.GetPropertyValue("LastNotificationCheck"));
+            }
+            set
+            {
+                this.SetPropertyValue("LastNotificationCheck", value);
+            }
+        }
+        
         public static UserProfile GetProfile(string username)
         {
             return Create(username) as UserProfile;
