@@ -1,32 +1,5 @@
 ﻿<!DOCTYPE html>
 
-@if (bugtracker.Controllers.DataController.getChangedStatusListOfCurrentUserSinceCheck().Count() == 0){
-    <style type="text/css">
-    ul#menu .notification
-    {
-        background-color: #e8eef4;    
-    }
-    ul#menu .notification a
-    {
-        background-color: #e8eef4;    
-    }
-    </style>
-}
-
-else
-{
-    <style type="text/css">
-    ul#menu .notification
-    {
-        background-color: #F5A9BC;    
-    }
-    ul#menu .notification a
-    {
-        background-color: #F5A9BC;    
-    }
-    </style>
-}
-
 <html>
 <head>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
