@@ -44,7 +44,7 @@
 @foreach (var item in Model) {
     <tr onmouseover="ChangeColor(this, true);" 
               onmouseout="ChangeColor(this, false);" 
-              onclick="loadPartialView('Bugs/Details/@item.ID', 'detailview');">
+              onclick="loadPartialView('/Bugs/Details/@item.ID', 'detailview');">
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
