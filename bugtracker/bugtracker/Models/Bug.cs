@@ -13,8 +13,8 @@ namespace bugtracker.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public int Criticality { get; set; }
-        public int Priority { get; set; }
-        public int Status { get; set; }
+        public int PriorityID { get; set; }
+        public int StatusID { get; set; }
         public int BugTypeID { get; set; }
 
 

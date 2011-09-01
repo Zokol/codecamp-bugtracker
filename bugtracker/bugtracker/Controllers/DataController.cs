@@ -122,6 +122,24 @@ namespace bugtracker.Controllers
                 .First(bt => bt.ID == bugtype).Name;
         }
 
+        public static List<Bug> OrderListByColumn(List<Bug> bugs, int column, bool? ascending)
+        {
+            bool asc = ascending ?? false;
+            List<Bug> result;
+            switch (column)
+            {
+                default: { result = bugs.OrderBy(b => b.ID).ToList<Bug>(); break; }
+                case 1: { result = bugs.OrderBy(b => b.PriorityID).ToList<Bug>(); break; }
+                case 2: { result = bugs.OrderBy(b => b.StatusID).ToList<Bug>(); break; }
+                case 3: { result = bugs.OrderBy(b => b.Criticality).ToList<Bug>(); break; }
+                case 4: { result = bugs.OrderBy(b => b.Description).ToList<Bug>(); break; }
+                case 5: { result = bugs.OrderBy(b => b.Title).ToList<Bug>(); break; }
+            }
+            if (asc) result.Reverse();
+            return result;
+
+        }
+
         public static IEnumerable<LogEvent> getEventsOfBug(int bugid)
         {
             return eventdb.Events
