@@ -96,8 +96,9 @@
     <hr/>
     <div id="detailviewbuttons">
         <!-- #dialog is the id of a DIV defined in the code below -->
-        <a href="#dialog" name="modal">Edit</a>
-        @*@Html.ActionLink("Delete", "Delete", new { id=model.Bug.ID })*@
+        <a href="#dialog" onclick="showModalPopup('Bugs/Edit/@Model.Bug.ID')">Edit</a>
+        |
+        <a href="#dialog" name="modal">Delete</a>
     </div>
  
     <div id="boxes">
