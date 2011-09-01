@@ -48,7 +48,7 @@ namespace bugtracker.Controllers
             List<Bug> q = DataController.OrderListByColumn(DataController.GetBugDb().Bugs.ToList(), sortBy, asc);
             
             ViewBag.sortColumn = sortColumn;
-            ViewBag.asc = !asc.Value;
+            ViewBag.asc = asc.Value;
 
             return View(q);
         }
