@@ -11,11 +11,12 @@ namespace bugtracker.Controllers
 {
     public static class DataController
     {
-
+        /** When possible, the datacontext generated at page start can be used ... for data that demands recent changes also while pages are open, use the GetXXXXDb() -methods instead. */
         public static BugDBContext bugdb = new BugDBContext();
         public static SubscriptionDBContext subsdb = new SubscriptionDBContext();
         public static EventDBContext eventdb = new EventDBContext();
 
+        /** These methods return the dbcontext that contains also changes made since datacontroller creation (page start) */
         public static BugDBContext GetBugDb()
         {
             return new BugDBContext();
@@ -31,18 +32,21 @@ namespace bugtracker.Controllers
             return new EventDBContext();
         }
         
-        public static Bug getBugByID(int id) /* Updated */
+        /* Returns a bug by bugid */
+        public static Bug getBugByID(int id)
         {
             return GetBugDb().Bugs
                 .First(b => b.ID == id);
         }
 
+        /* Returns subscriptions of an user */
         public static IEnumerable<Subscription> getSubscriptionsOfUser(string username)
         {
             return subsdb.Subscriptions
                 .Where(s => s.Username == username);
         }
 
+        /* Returns changes (logevents) made to bugs since user previous logged off from system */
         public static IEnumerable<LogEvent> getChangedStatusListOfCurrentUserSinceLogout()
         {
             DateTime lastsignoff = UserProfile.GetProfile(Membership.GetUser().UserName).LastSignOff;
@@ -51,6 +55,8 @@ namespace bugtracker.Controllers
             return events;
         }
 
+        /* Returns changes (logevents) made to bugs since user previously checked the on-time notifications */
+        /** USAGE NOT IMPLEMENTED */
         public static IEnumerable<LogEvent> getChangedStatusListOfCurrentUserSinceCheck()
         {
             if (Membership.GetUser() == null) return new List<LogEvent>();
@@ -60,6 +66,7 @@ namespace bugtracker.Controllers
             return events;
         }
 
+        /* Returns bugs current user has subscribed */
         public static IEnumerable<Bug> getSubscribedBugsOfCurrentUser()
         {
             if (Membership.GetUser() == null) return new List<Bug>();
@@ -76,6 +83,7 @@ namespace bugtracker.Controllers
             return result;
         }
 
+        /* Returns bugs user has participaged on working on */
         public static IEnumerable<Bug> getBugsOfUser(string username)
         {
             List<LogEvent> events = GetEventDb().Events.Where(u => u.User == username).ToList<LogEvent>();
@@ -88,24 +96,18 @@ namespace bugtracker.Controllers
                     if (b.BugID == e.ID) { result.Add(e); }
                 }
             }
-
-
-
             return result.AsEnumerable<Bug>();
 
-            //select new {c.Name, o.OrderNumber};
-            
-           /* eventdb.Events
-                .Where(u => u.User == username)
-                .Join(*/
         }
 
+        /* Returns all bugs */
         public static IEnumerable<Bug> getAllBugs()
         {
             if (Membership.GetUser() == null) return new List<Bug>();
             return GetBugDb().Bugs;
         }
 
+        /* Returns Bug Status types and ids of status types */
         public static List<StatusType> getStatusTypes()
         {
             return new List<StatusType>
@@ -121,6 +123,7 @@ namespace bugtracker.Controllers
             };
         }
 
+        /* Returns Bug types and ids of those types */
         public static List<BugType> getBugTypes()
         {
             return new List<BugType>
@@ -133,6 +136,7 @@ namespace bugtracker.Controllers
             };
         }
 
+        /* Returns Bug Criticality types and ids of those types */
         public static List<CriticalityType> getCriticalityTypes()
         {
             return new List<CriticalityType>
@@ -145,7 +149,7 @@ namespace bugtracker.Controllers
             };
         }
 
-
+        /* Returns Logevent types and ids of those types */
         public static List<LogEventType> getLogEventTypes()
         {
             return new List<LogEventType>
@@ -159,6 +163,7 @@ namespace bugtracker.Controllers
             };
         }
 
+        /* Returns bugs of priority */
         public static IEnumerable<Bug> getBugsOfPriority(int priority)
         {
             if (Membership.GetUser() == null) return new List<Bug>();
@@ -166,6 +171,7 @@ namespace bugtracker.Controllers
                 .Where(b => b.PriorityID == priority);
         }
 
+        /* Returns bugs of equal or higher criticality */
         public static IEnumerable<Bug> getBugsofCriticality(int criticality)
         {
             if (Membership.GetUser() == null) return new List<Bug>();
@@ -174,6 +180,7 @@ namespace bugtracker.Controllers
 
         }
 
+        /* Returns bugs of status */
         public static IEnumerable<Bug> getBugsofStatus(int status)
         {
             if (Membership.GetUser() == null) return new List<Bug>();
@@ -181,26 +188,32 @@ namespace bugtracker.Controllers
                 .Where(b => b.StatusID == status);
         }
 
+        /* Returns bug type string based on type ID, see getBugTypes() */
         public static String getBugTypeString(int bugtype)
         {
             return getBugTypes().First(b => b.ID == bugtype).Name;
         }
 
+        /* Returns status type string based on type ID, see getStatusTypes() */
         public static String getStatusTypeString(int status)
         {
             return getStatusTypes().First(b => b.ID == status).Name;
         }
 
+        /* Returns criticality type string based on type ID, see getCriticalityTypes() */
         public static String getCriticalityTypeString(int criticality)
         {
             return getCriticalityTypes().First(b => b.ID == criticality).Name;
         }
 
+        /* Returns logevent type string based on type ID, see getLogEventTypes() */
         public static String getLogEventTypeString(int eventtype)
         {
             return getLogEventTypes().First(b => b.ID == eventtype).Name;
         }
 
+        /* Orders the list given as argument, by the column and returns the ordered list */
+        /** USAGE OF CHAINING NOT IMPLEMENTED */
         public static List<Bug> OrderListByColumn(List<Bug> bugs, int column, bool? ascending)
         {
             bool asc = ascending ?? false;
@@ -219,22 +232,26 @@ namespace bugtracker.Controllers
             return result;
         }
 
+        /* Returns events of a bug */
         public static IEnumerable<LogEvent> getEventsOfBug(int bugid)
         {
             return eventdb.Events
                 .Where(e => e.BugID == bugid);
         }
 
+        /* Returns subscription by ID */
         public static IEnumerable<Subscription> getSubByID(int id) 
         {
             return subsdb.Subscriptions
                 .Where(s => s.SubscriptionID == id);
         }
 
+        /* Returns bug by subscription ID */
         public static int getBugBySubID(int Sid) {
             return subsdb.Subscriptions.First(a => a.SubscriptionID == Sid).SubscriptionBugID;
         }
 
+        /* Returns true if user of username is subscribed to the bug of bugid */
         public static bool isUserSubscribedToBug(int bugId, string username)
         {
             foreach (Subscription sub in DataController.getSubscriptionsOfUser(username))
