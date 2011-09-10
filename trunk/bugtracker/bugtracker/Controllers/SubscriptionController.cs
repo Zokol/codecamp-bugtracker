@@ -12,9 +12,10 @@ namespace bugtracker.Controllers
 {
     public class SubscriptionController : Controller
     {
+		/* Get database from DataController */
         private SubscriptionDBContext db = DataController.GetSubscriptionDb();
 
-        //
+        /* View to display all bugs that current user has subscribed */
         // GET: /Subscription/
 
         public ViewResult Index()
@@ -23,6 +24,7 @@ namespace bugtracker.Controllers
         }
 
 
+		/* Returns details of bug of selected subscription */
         public ActionResult Details(int id)
         {
             BugEventList bel = new BugEventList
@@ -33,7 +35,7 @@ namespace bugtracker.Controllers
             return PartialView(bel);
         }
 
-        //
+        /* Not in use */
         // GET: /Subscription/Create
 
         public ActionResult Create()
@@ -41,7 +43,7 @@ namespace bugtracker.Controllers
             return View();
         }
 
-        //
+        /* Creation of subscription, used when user creates bug or clicks subscription link in bug details. */
         // POST: /Subscription/Create
 
         [HttpPost]
@@ -60,6 +62,7 @@ namespace bugtracker.Controllers
             return View(subscription);
         }
 
+		/* Checks if user is already subscribed to selected bug. Uses previous method to create subscription. */
         public ActionResult CreateNewSubscription(string Username, int SubscriptionBugID)
         {
             if (DataController.isUserSubscribedToBug(SubscriptionBugID, Username))
@@ -82,6 +85,7 @@ namespace bugtracker.Controllers
 
         }
 
+		/* Deletes subscription, finds subscription by bugid and username and deletes it from database. */
         public ActionResult DeleteSubscription(string Username, int SubscriptionBugID)
         {
 
@@ -100,7 +104,7 @@ namespace bugtracker.Controllers
         }
 
 
-        //
+        /* Not in use */
         // GET: /Subscription/Edit/5
 
         public ActionResult Edit(int id)
@@ -109,7 +113,7 @@ namespace bugtracker.Controllers
             return View(subscription);
         }
 
-        //
+        /* Not in use */
         // POST: /Subscription/Edit/5
 
         [HttpPost]
@@ -124,7 +128,7 @@ namespace bugtracker.Controllers
             return View(subscription);
         }
 
-        //
+        /* Not in use */
         // GET: /Subscription/Delete/5
 
         public ActionResult Delete(int id)
@@ -133,7 +137,7 @@ namespace bugtracker.Controllers
             return View(subscription);
         }
 
-        //
+        /* Not in use */
         // POST: /Subscription/Delete/5
 
         [HttpPost, ActionName("Delete")]
