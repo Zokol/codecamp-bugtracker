@@ -13,7 +13,7 @@ namespace bugtracker.Controllers
     {
         private EventDBContext db = DataController.GetEventDb();
 
-        //
+        /* View for events of subscribed bugs. Uses DataController to fetch new events. */
         // GET: /Event/
 
         public ViewResult Index()
@@ -21,7 +21,7 @@ namespace bugtracker.Controllers
             return View(DataController.getChangedStatusListOfCurrentUserSinceLogout());
         }
 
-        //
+        /* Details for selected event */
         // GET: /Event/Details/5
 
         public ViewResult Details(DateTime id)
@@ -30,7 +30,7 @@ namespace bugtracker.Controllers
             return View(logevent);
         }
 
-        //
+        /* Event creation view is not used, events are created automagically when bug is created, edited, or deleted. */
         // GET: /Event/Create
 
         public ActionResult Create()
@@ -55,6 +55,7 @@ namespace bugtracker.Controllers
         }
 
 
+		/* Creates new event. Takes event details as parameter and saves it to Events database. */
         public void Create(int bugID, string username, int typeID, string comment)
         {
             LogEvent logevent = new LogEvent();
@@ -70,7 +71,7 @@ namespace bugtracker.Controllers
         }
         
         
-        //
+        /* Event editing is not used */
         // GET: /Event/Edit/5
  
         public ActionResult Edit(DateTime id)
@@ -79,7 +80,6 @@ namespace bugtracker.Controllers
             return View(logevent);
         }
 
-        //
         // POST: /Event/Edit/5
 
         [HttpPost]
@@ -94,7 +94,7 @@ namespace bugtracker.Controllers
             return View(logevent);
         }
 
-        //
+        /* Event is not deleted from view */
         // GET: /Event/Delete/5
  
         public ActionResult Delete(DateTime id)

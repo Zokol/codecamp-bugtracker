@@ -15,15 +15,8 @@ namespace bugtracker.Controllers
     {
         private BugDBContext db = DataController.GetBugDb();
 
-        
-
-        //
+        /* Main view for BugTracker, lists all bugs and sorts the list with given parameter */
         // GET: /Bugs/
-
-        /*public ViewResult Index()
-        {
-            return View(DataController.GetBugDb().Bugs.ToList());
-        }*/
 
         public ActionResult Index(string sortColumn, bool? asc)
         {
@@ -55,7 +48,8 @@ namespace bugtracker.Controllers
             return View(q);
         }
         
-        //
+        /* Displays details of certain bug. Return type is BugEventList, because Detail-view has bug details and bug events.
+		   Subscription check is to decide if Details-view has Subscribe- or Unsubscribe-link. */
         // GET: /Bugs/Details/5
         public ActionResult Details(int id)
         {
@@ -80,7 +74,7 @@ namespace bugtracker.Controllers
             return PartialView(bel);
         }
 
-        //
+        /* Bug creating method */
         // GET: /Bugs/Create
 
         public ActionResult Create()
@@ -88,7 +82,7 @@ namespace bugtracker.Controllers
             return View();
         } 
 
-        //
+        /* Saves new bug data, adds also subscription for user who created this bug. */
         // POST: /Bugs/Create
 
         [HttpPost]
@@ -108,7 +102,7 @@ namespace bugtracker.Controllers
             return View(bug);
         }
         
-        //
+        /* Edit view for bug */
         // GET: /Bugs/Edit/5
  
         public ActionResult Edit(int id)
@@ -117,7 +111,7 @@ namespace bugtracker.Controllers
             return PartialView(bug);
         }
 
-        //
+        /* Saves edited data on bug database. Creates events for all changed fields. */
         // POST: /Bugs/Edit/5
 
         [HttpPost]

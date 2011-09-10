@@ -8,9 +8,10 @@ using bugtracker.Models;
 
 namespace bugtracker.Controllers
 {
+	/* Controller to create list of events for certain bug */
     public class BugEventListController : Controller
     {
-        //
+        /* Displays all bugs */
         // GET: /BugEventList/bugid
 
         public ActionResult Index()
@@ -18,7 +19,7 @@ namespace bugtracker.Controllers
             return View(DataController.getAllBugs());
         }
 
-        //
+        /* Lists all events for certain bug. Return contais list of events and bug id. After creating list, method checks if user has subscribed to this bug. */
         // GET: /BugEventList/Details/5
         public ViewResult Details(int id)
         {
