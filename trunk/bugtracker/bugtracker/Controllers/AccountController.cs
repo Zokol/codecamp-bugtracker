@@ -1,4 +1,17 @@
-﻿using System;
+﻿/*
+----------------------------
+AccountController.cs
+----------------------------
+Account Controller
+
+Handles account and login
+data from Account Model and
+passes it to Account
+view.
+----------------------------
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +25,7 @@ namespace bugtracker.Controllers
     public class AccountController : Controller
     {
 
-        //
+        /* Login view, triggered by link at /Shared/_Layout.cshtml. Directs to LogOn.cshtml*/
         // GET: /Account/LogOn
 
         public ActionResult LogOn()
@@ -20,13 +33,13 @@ namespace bugtracker.Controllers
             return View();
         }
 
-        //
+        /* Following methods deal with login view. */
         // POST: /Account/LogOn
 
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // 
             {
                 if (Membership.ValidateUser(model.UserName, model.Password))
                 {
@@ -73,7 +86,7 @@ namespace bugtracker.Controllers
             return View();
         }
 
-        //
+        /* Takes data from registration view, creates new user*/
         // POST: /Account/Register
 
         [HttpPost]
@@ -117,7 +130,7 @@ namespace bugtracker.Controllers
             return PartialView();
         }
 
-        //
+        /* handles changing user password */
         // POST: /Account/ChangePassword
 
         [Authorize]
@@ -154,7 +167,7 @@ namespace bugtracker.Controllers
             return PartialView(model);
         }
 
-        //
+        /* is displayed when password change was successfull */
         // GET: /Account/ChangePasswordSuccess
 
         public ActionResult ChangePasswordSuccess()
@@ -162,11 +175,13 @@ namespace bugtracker.Controllers
             return new EmptyResult();
         }
 
+		/* Result for Profile-link, shows profile-view in partial view pop-up. */
         public ActionResult Profile()
         {
             return PartialView(UserProfile.GetProfile(HttpContext.User.Identity.Name));
         }
 
+		/* translates account error codes to strings */
         #region Status Codes
         private static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
