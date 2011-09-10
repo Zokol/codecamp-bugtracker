@@ -10,7 +10,7 @@ namespace bugtracker.Controllers
 {
     public class StatsController : Controller
     {
-        //
+        /* Details for  */
         // GET: /Stats/
 
         public ActionResult Details(string username)

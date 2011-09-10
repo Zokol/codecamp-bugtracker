@@ -9,6 +9,9 @@ namespace bugtracker.Controllers
 {
     public class HomeController : Controller
     {
+	
+		/* Controller to check if user is logged in. Displays user name or login link on _Layout.cshtml */
+	
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
